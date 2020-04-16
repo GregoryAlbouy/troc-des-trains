@@ -27,20 +27,16 @@ class TdtTicketList extends HTMLElement
 
     createdCallback() {} // quand enregistré via document.registerElement()
 
-    attachedCallback() {} // à l'insertion dans le DOM
+    attributeChangedCallback() {} // au changement d'attribut
 
-    detachedCallback() {} // au retrait du DOM
-
-    attributeChangedCallback() {} // au changement d'attribu
-
-    connectedCallback() {
+    connectedCallback() { // À l'insertion dans le DOM
         // Avec le shadowDOM, this.innerHTML devient this._root.innerHTML
         this._root.innerHTML = `
             <style></style>
             <template id="ticket-template">
                 <h2 id="id"></h2>
                 <p id="start-time"></p>
-                <p id ="end-time"></p>
+                <p id="end-time"></p>
             </template>
             <div id="result"></div>
         `;
@@ -61,6 +57,8 @@ class TdtTicketList extends HTMLElement
             this._root.querySelector('#result').appendChild(clone);
         }
     }
+
+    disconnectedCallback() // À la suppression du DOM
 }
 
 window.customElements.define('tdt-ticket-list', TdtTicketList); 
