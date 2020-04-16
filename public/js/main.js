@@ -212,4 +212,4 @@ document.addEventListener('DOMContentLoaded', () => {
     for (dropdown of dropdownList) {
         toggleDropdown(dropdown.trigger, dropdown.target);
     }
-})
+});
