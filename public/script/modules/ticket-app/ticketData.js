@@ -1,6 +1,4 @@
-/* Database emulation */
-
-let ticketDataList = [
+export const ticketDataList = [
     {
         "id": 0,
         "vendorName": "Ophélie Martin",
@@ -85,7 +83,6 @@ let ticketDataList = [
     }
 ];
 
-/* Shouldn't be here, but better for readability of the main.js */
 const displayTickets = () => {
     for (const ticketData of ticketDataList) {
         const
@@ -251,7 +248,7 @@ const displayTickets = () => {
             </button>
         `;
 
-        listItem = document.createElement('li');
+        const listItem = document.createElement('li');
         listItem.appendChild(ticket)
         ticketListContainer.appendChild(listItem);
 
