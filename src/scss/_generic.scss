@@ -208,10 +208,10 @@ body {
             background: center / contain no-repeat;
         }
         &--burger::before { display: none; }
-        &--lang::before { background-image: url('../img/header-lang-fr.svg'); }
-        &--accessibility::before { background-image: url('../img/header-accessibility.svg'); }
-        &--account::before { background-image: url('../img/header-account.svg'); }
-        &--cart::before { background-image: url('../img/header-cart.svg'); }
+        &--lang::before { background-image: url('../images/header-lang-fr.svg'); }
+        &--accessibility::before { background-image: url('../images/header-accessibility.svg'); }
+        &--account::before { background-image: url('../images/header-account.svg'); }
+        &--cart::before { background-image: url('../images/header-cart.svg'); }
 
         &:not(.header-btn--burger) { padding-left: 4.2rem; } /* makes the button's area cover its icon (width of 2.6rem + a margin of 1.6rem) */
 

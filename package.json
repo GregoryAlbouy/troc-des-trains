@@ -2,16 +2,16 @@
   "name": "trocdestrains",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "",
   "scripts": {
-    "sass:watch": "sass --watch src/scss/main.scss public/css/main.css",
-    "sass:build": "sass --style=compressed --no-source-map src/scss/main.scss public/css/main.css"
+    "sass:watch": "sass --watch src/scss/main.scss public/style/main.css",
+    "sass:build": "sass --style=compressed --no-source-map src/scss/main.scss public/style/main.css"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/GregoryAlbouy/troc-des-trains.git"
   },
-  "author": "",
+  "author": "Gregory Albouy",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/GregoryAlbouy/troc-des-trains/issues"
