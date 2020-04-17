@@ -1,11 +1,12 @@
 // import { TdtTicket } from '../../components/tdt-ticket/TdtTicket.js'
+import { Utils } from '../utils.js'
 
 export class Ticket
 {
     // ticketApp
     data
-    element
     inCart = false
+    dom = {}
 
     constructor(ticketApp, ticketData)
     {
@@ -19,7 +20,6 @@ export class Ticket
     addToCart()
     {
         if (this.inCart) return
-        console.log('started adding...')
         this.ticketApp.addToCart(this)
     }
 
@@ -42,13 +42,22 @@ export class Ticket
         ticket.setAttribute('data-id', this.data.id)
         ticket.innerHTML = this.getHTML()
 
+        const
+            head = ticket.querySelector('.ticket-head'),
+            body = ticket.querySelector('.ticket-body'),
+            btnAdd = body.querySelector('.btn--add'),
+            btnVendor = body.querySelector('.btn--vendor') // test for remove, to be deleted
+
         // events
-        ticket.querySelector('.btn--add').onclick = this.addToCart.bind(this)
-        ticket.querySelector('.btn--vendor').onclick = this.removeFromCart.bind(this)
-        ticket.querySelector('.ticket-head').onclick = this.unfold.bind(this)
+        btnAdd.onclick = this.addToCart.bind(this)
+        btnVendor.onclick = this.removeFromCart.bind(this)
+        // ticket.querySelector('.ticket-head').onclick = this.unfold.bind(this)
 
-
-        this.element = ticket
+        this.dom = {
+            element: ticket,
+            head: head,
+            body: body
+        }
     }
 
     getHTML()

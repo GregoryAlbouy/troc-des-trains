@@ -1,3 +1,5 @@
+import { Utils } from '../utils.js';
+
 export class TicketList
 {
     content = []
@@ -7,8 +9,9 @@ export class TicketList
         const container = document.querySelector('.ticket-list-container')
         this.content.forEach((ticket) => {
             const listItem = document.createElement('li');
-            listItem.appendChild(ticket.element)
+            listItem.appendChild(ticket.dom.element)
             container.appendChild(listItem);
+            Utils.toggleAccordion(ticket.dom.head, ticket.dom.body)
         })
     }
 

@@ -3,6 +3,19 @@ import { Utils } from './modules/utils.js'
 
 document.addEventListener('DOMContentLoaded', () => {
 
+
+    function test()
+    {
+        const obj = {}
+        let a = 0
+        obj.value = a
+        a = 42
+        console.log(obj)
+    }
+    test()
+
+
+
     /* Declarations */
     const
         accordionList = [
@@ -64,18 +77,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const ticketApp = new TicketApp() 
 
     // Launches toggleAccordion function for all elements in accordionList
-    for (const accordion of accordionList) {
+    // for (const accordion of accordionList) {
 
-        // If it's an array, then launch the function each occurrence
-        if (accordion.isIterable) {
-            for (let i=0; i<accordion.trigger.length; i++) {
-                toggleAccordion(accordion.trigger[i], accordion.target[i]);
-            }
-        // Else, simply launch the function
-        } else {
-            toggleAccordion(accordion.trigger, accordion.target);
-        }
-    }
+    //     // If it's an array, then launch the function each occurrence
+    //     if (accordion.isIterable) {
+    //         for (let i=0; i<accordion.trigger.length; i++) {
+    //             toggleAccordion(accordion.trigger[i], accordion.target[i]);
+    //         }
+    //     // Else, simply launch the function
+    //     } else {
+    //         toggleAccordion(accordion.trigger, accordion.target);
+    //     }
+    // }
 
     // Idem for dropdown
     for (const dropdown of dropdownList) {
