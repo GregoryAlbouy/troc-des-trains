@@ -1,4 +1,4 @@
-class TdtTicket extends HTMLElement
+export class TdtTicket extends HTMLElement
 {
     constructor()
     {
@@ -13,6 +13,16 @@ class TdtTicket extends HTMLElement
     connectedCallback()
     {
 
+    }
+
+    fold()
+    {
+
+    }
+
+    unfold()
+    {
+        
     }
 }
 

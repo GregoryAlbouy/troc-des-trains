@@ -1,5 +1,5 @@
+import { TicketApp } from './modules/ticket-app/ticket-app.js'
 import { Utils } from './modules/utils.js'
-import { TicketList } from './modules/ticket-app/ticket-list.js'
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     /* Launch HMI */
 
-    const ticketList = new TicketList() 
+    const ticketApp = new TicketApp() 
 
     // Launches toggleAccordion function for all elements in accordionList
     for (const accordion of accordionList) {
