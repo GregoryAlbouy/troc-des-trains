@@ -13,9 +13,24 @@ export class Ticket
         this.ticketApp = ticketApp
         this.data = ticketData
         this.createElement()
+        this.setConnectionObserver()
     }
 
     // set inCart(value) { this.inCart = value; console.log(`ticket ${this.data.id} in cart: ${this.inCart}`) }
+
+    setConnectionObserver()
+    {
+        // const container = document.querySelector('.ticket-list-container')
+        // const observer = new MutationObserver((mutations, observer) => {
+        //     console.log(mutations, observer)
+        // })
+        // observer.observe(container, { childList: true })
+    }
+
+    connectedCallback() // custom for now
+    {
+
+    }
 
     addToCart()
     {
@@ -42,23 +57,68 @@ export class Ticket
         ticket.setAttribute('data-id', this.data.id)
         ticket.innerHTML = this.getHTML()
 
-        const
-            head = ticket.querySelector('.ticket-head'),
-            body = ticket.querySelector('.ticket-body'),
-            btnAdd = body.querySelector('.btn--add'),
-            btnVendor = body.querySelector('.btn--vendor') // test for remove, to be deleted
-
-        // events
-        btnAdd.onclick = this.addToCart.bind(this)
-        btnVendor.onclick = this.removeFromCart.bind(this)
-        // ticket.querySelector('.ticket-head').onclick = this.unfold.bind(this)
-
         this.dom = {
             element: ticket,
-            head: head,
-            body: body
+            head: ticket.querySelector('.ticket-head'),
+            body: ticket.querySelector('.ticket-body'),
+            btnAdd: ticket.querySelector('.btn--add'),
+            btnVendor: ticket.querySelector('.btn--vendor')
         }
+
+        // const
+        //     head = ticket.querySelector('.ticket-head'),
+        //     body = ticket.querySelector('.ticket-body'),
+        //     btnAdd = body.querySelector('.btn--add'),
+        //     btnVendor = body.querySelector('.btn--vendor') // test for remove, to be deleted
+
+        // events
+        this.dom.btnAdd.onclick = this.addToCart.bind(this)
+        this.dom.btnVendor.onclick = this.removeFromCart.bind(this)
     }
+
+    toggleAccordion()
+    {
+        // First, get actual height of the target element to reinject it later
+        const bodyHeight = Utils.getOffset(this.dom.body).height;
+
+        const fold = (ticket) => {
+            ticket.dom.element.classList.remove('open')
+            ticket.dom.body.style.height = '0px'
+        }
+
+        const unfold = (ticket) => {
+            ticket.dom.element.classList.add('open')
+            ticket.dom.body.style.height = `${bodyHeight}px`
+        }
+
+        // Then, set it to 0 to hide it
+        if (!this.dom.body.classList.contains('open')) this.dom.body.style.height = '0px';
+
+        // Finally, restitute its height on click or set it to 0 depending on its state
+        this.dom.head.addEventListener('click', () =>  {
+            // close all
+            if (!this.dom.element.classList.contains('open')) {
+                this.ticketApp.ticketList.content.forEach(fold)
+                unfold(this)
+            } else {
+                fold(this)
+            }
+
+            // open this one
+            // if (trigger.parentNode.classList.contains('open')) {
+            //     this.dom.body.style.height = `${targetHeight}px`
+            //     console.log(targetHeight)
+
+                // Test autoscroll 1
+                // target.scrollIntoView({ block: 'start', inline: 'nearest', behavior: 'smooth' });
+
+                // Test autoscroll 2
+                // window.scroll(0, getOffset(target).top);
+            // } else {
+            //     target.style.height = '0px';
+            // }
+        });
+    };
 
     getHTML()
     {

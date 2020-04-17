@@ -4,15 +4,6 @@ import { Utils } from './modules/utils.js'
 document.addEventListener('DOMContentLoaded', () => {
 
 
-    function test()
-    {
-        const obj = {}
-        let a = 0
-        obj.value = a
-        a = 42
-        console.log(obj)
-    }
-    test()
 
 
 

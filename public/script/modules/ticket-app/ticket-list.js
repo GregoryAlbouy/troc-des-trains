@@ -7,11 +7,15 @@ export class TicketList
     render()
     {
         const container = document.querySelector('.ticket-list-container')
+        // const append = (ticket) => {
+
+        // }
         this.content.forEach((ticket) => {
             const listItem = document.createElement('li');
             listItem.appendChild(ticket.dom.element)
             container.appendChild(listItem);
-            Utils.toggleAccordion(ticket.dom.head, ticket.dom.body)
+            ticket.toggleAccordion()
+            // Utils.toggleAccordion(ticket.dom.head, ticket.dom.body)
         })
     }
 
