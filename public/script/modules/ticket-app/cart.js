@@ -51,16 +51,16 @@ export class Cart
 
     create()
     {
-        const cart = document.createElement('section')
-        cart.classList.add('menu', 'menu--cart')
-        cart.innerHTML = this.getHTML()
-
-        this.dom.element = cart
+        this.dom.element = document.createElement('section')
+        this.dom.element.classList.add('menu', 'menu--cart')
+        this.dom.element.innerHTML = this.getHTML()
+        
         this.dom.ticketList = this.dom.element.querySelector('.cart-list')
         this.dom.total = this.dom.element.querySelector('.total-amount')
-        this.dom.btn.addEventListener('click', () => this.dom.element.classList.toggle('on'))
 
-        document.body.append(cart)
+        this.dom.btn.addEventListener('click', () => this.dom.element.classList.toggle('on'))
+        
+        document.body.append(this.dom.element)
     }
 
     getHTML()
