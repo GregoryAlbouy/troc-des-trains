@@ -5,8 +5,9 @@ export class Ticket
 {
     // ticketApp
     data
-    inCart = false
     dom = {}
+    inCart = false
+    isAppended = false // unused
 
     constructor(ticketApp, ticketData)
     {
@@ -27,9 +28,11 @@ export class Ticket
         // observer.observe(container, { childList: true })
     }
 
-    connectedCallback() // custom for now
+    connectedCallback() // custom for now: called by custom event appendEvent
     {
-
+        this.isAppended = true
+        this.dom.bodyHeight = Utils.getOffset(this.dom.body).height
+        this.toggleAccordion()
     }
 
     addToCart()
@@ -44,9 +47,16 @@ export class Ticket
         this.ticketApp.removeFromCart(this)
     }
 
-    unfold()
+    close()
     {
+        this.dom.element.classList.remove('open')
+        this.dom.body.style.height = '0px'
+    }
 
+    open()
+    {
+        this.dom.element.classList.add('open')
+        this.dom.body.style.height = `${this.dom.bodyHeight}px`
     }
 
     createElement()
@@ -62,7 +72,7 @@ export class Ticket
             head: ticket.querySelector('.ticket-head'),
             body: ticket.querySelector('.ticket-body'),
             btnAdd: ticket.querySelector('.btn--add'),
-            btnVendor: ticket.querySelector('.btn--vendor')
+            btnRemove: ticket.querySelector('.close-btn')
         }
 
         // const
@@ -73,50 +83,24 @@ export class Ticket
 
         // events
         this.dom.btnAdd.onclick = this.addToCart.bind(this)
-        this.dom.btnVendor.onclick = this.removeFromCart.bind(this)
+        this.dom.btnRemove.onclick = this.removeFromCart.bind(this)
+        this.dom.element.addEventListener('ticketappend', this.connectedCallback.bind(this))
     }
 
     toggleAccordion()
     {
-        // First, get actual height of the target element to reinject it later
-        const bodyHeight = Utils.getOffset(this.dom.body).height;
-
-        const fold = (ticket) => {
-            ticket.dom.element.classList.remove('open')
-            ticket.dom.body.style.height = '0px'
-        }
-
-        const unfold = (ticket) => {
-            ticket.dom.element.classList.add('open')
-            ticket.dom.body.style.height = `${bodyHeight}px`
-        }
-
-        // Then, set it to 0 to hide it
-        if (!this.dom.body.classList.contains('open')) this.dom.body.style.height = '0px';
+        // First, show the ticket closed.
+        if (!this.dom.element.classList.contains('open')) this.dom.body.style.height = '0px';
 
         // Finally, restitute its height on click or set it to 0 depending on its state
         this.dom.head.addEventListener('click', () =>  {
             // close all
             if (!this.dom.element.classList.contains('open')) {
-                this.ticketApp.ticketList.content.forEach(fold)
-                unfold(this)
+                this.ticketApp.ticketList.content.forEach(ticket => ticket.close())
+                this.open()
             } else {
-                fold(this)
+                this.close()
             }
-
-            // open this one
-            // if (trigger.parentNode.classList.contains('open')) {
-            //     this.dom.body.style.height = `${targetHeight}px`
-            //     console.log(targetHeight)
-
-                // Test autoscroll 1
-                // target.scrollIntoView({ block: 'start', inline: 'nearest', behavior: 'smooth' });
-
-                // Test autoscroll 2
-                // window.scroll(0, getOffset(target).top);
-            // } else {
-            //     target.style.height = '0px';
-            // }
         });
     };
 

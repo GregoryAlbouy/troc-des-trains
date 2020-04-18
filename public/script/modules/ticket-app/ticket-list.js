@@ -1,4 +1,4 @@
-import { Utils } from '../utils.js';
+import { TicketEvent } from '../ticket-event.js';
 
 export class TicketList
 {
@@ -7,16 +7,17 @@ export class TicketList
     render()
     {
         const container = document.querySelector('.ticket-list-container')
-        // const append = (ticket) => {
+        const appendTicket = (ticket) => {
+            container.append(ticket.dom.element)
+            ticket.dom.element.dispatchEvent(new TicketEvent('ticketappend', {
+                detail: {
+                    parent: container,
+                    element: ticket
+                }
+            }))
+        }
 
-        // }
-        this.content.forEach((ticket) => {
-            const listItem = document.createElement('li');
-            listItem.appendChild(ticket.dom.element)
-            container.appendChild(listItem);
-            ticket.toggleAccordion()
-            // Utils.toggleAccordion(ticket.dom.head, ticket.dom.body)
-        })
+        this.content.forEach(appendTicket)
     }
 
     add(ticket)

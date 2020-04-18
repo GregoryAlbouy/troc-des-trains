@@ -80,5 +80,145 @@ export const ticketDataList = [
             }
 
         ]
+    },
+    {
+        "id": 4,
+        "vendorName": "Arnaud Fornelli",
+        "price": "49.99",
+        "startTime": "12:17",
+        "endTime": "19:42",
+        "totalDuration": "6:45",
+        "connections": "1 correspondance",
+        "conditions": "Carte Jeune",
+        "steps": [
+            {
+                "isConnection": false,
+                "startTime": "12:17",
+                "endTime": "14:25",
+                "duration": "2h08"
+            },
+            {
+                "isConnection": true,
+                "duration": "40"
+            },
+            {
+                "isConnection": false,
+                "startTime": "12:17",
+                "endTime": "14:25"
+            }
+
+        ]
+    },
+    {
+        "id": 5,
+        "vendorName": "Arnaud Fornelli",
+        "price": "49.99",
+        "startTime": "12:17",
+        "endTime": "19:42",
+        "totalDuration": "6:45",
+        "connections": "1 correspondance",
+        "conditions": "Carte Jeune",
+        "steps": [
+            {
+                "isConnection": false,
+                "startTime": "12:17",
+                "endTime": "14:25",
+                "duration": "2h08"
+            },
+            {
+                "isConnection": true,
+                "duration": "40"
+            },
+            {
+                "isConnection": false,
+                "startTime": "12:17",
+                "endTime": "14:25"
+            }
+
+        ]
+    },
+    {
+        "id": 6,
+        "vendorName": "Arnaud Fornelli",
+        "price": "49.99",
+        "startTime": "12:17",
+        "endTime": "19:42",
+        "totalDuration": "6:45",
+        "connections": "1 correspondance",
+        "conditions": "Carte Jeune",
+        "steps": [
+            {
+                "isConnection": false,
+                "startTime": "12:17",
+                "endTime": "14:25",
+                "duration": "2h08"
+            },
+            {
+                "isConnection": true,
+                "duration": "40"
+            },
+            {
+                "isConnection": false,
+                "startTime": "12:17",
+                "endTime": "14:25"
+            }
+
+        ]
+    },
+    {
+        "id": 7,
+        "vendorName": "Arnaud Fornelli",
+        "price": "49.99",
+        "startTime": "12:17",
+        "endTime": "19:42",
+        "totalDuration": "6:45",
+        "connections": "1 correspondance",
+        "conditions": "Carte Jeune",
+        "steps": [
+            {
+                "isConnection": false,
+                "startTime": "12:17",
+                "endTime": "14:25",
+                "duration": "2h08"
+            },
+            {
+                "isConnection": true,
+                "duration": "40"
+            },
+            {
+                "isConnection": false,
+                "startTime": "12:17",
+                "endTime": "14:25"
+            }
+
+        ]
+    },
+    {
+        "id": 8,
+        "vendorName": "Arnaud Fornelli",
+        "price": "49.99",
+        "startTime": "12:17",
+        "endTime": "19:42",
+        "totalDuration": "6:45",
+        "connections": "1 correspondance",
+        "conditions": "Carte Jeune",
+        "steps": [
+            {
+                "isConnection": false,
+                "startTime": "12:17",
+                "endTime": "14:25",
+                "duration": "2h08"
+            },
+            {
+                "isConnection": true,
+                "duration": "40"
+            },
+            {
+                "isConnection": false,
+                "startTime": "12:17",
+                "endTime": "14:25"
+            }
+
+        ]
     }
 ]

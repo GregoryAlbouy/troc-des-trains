@@ -1,18 +1,25 @@
+import { TicketEvent } from './ticket-event.js'
+
 export class Utils
 {
-    
     // Returns offset properties used in various functions
     static getOffset(element)
     {
         return {
             top: element.offsetTop - element.scrollTop,
             left: element.offsetLeft - element.scrollLeft,
-            height: element.offsetHeight
+            width: element.offsetWidth,
+            height: element.clientHeight
         }
     }
 
-    // Duplicates an element and positions it in absolute at the same place
-    static cloneElement(element)
+    /**
+     * Duplicates an element and positions it in absolute at the same place
+     * @param {Element} element Element to be cloned
+     * @function
+     * @returns {Element} clone
+     */
+    static floatingCopy(element)
     {
         // Get actual position of the original element and create the clone
         const
@@ -26,31 +33,42 @@ export class Utils
         return clone
     }
 
-    // Makes an accordion without having to set height: 0 in the css file. Also allows css transition with auto height
-    static toggleAccordion(trigger, target)
+    static addAnimation(ticket)
     {
-        // First, get actual height of the target element to reinject it later
-        const targetHeight = Utils.getOffset(target).height;
+        // Close the active ticket first
+        ticket.close()
 
-        // Then, set it to 0 to hide it
-        if (!target.classList.contains('open')) target.style.height = '0px';
+        // Clone the ticket to animate it and keep the original still
+        const ticketCopy = Utils.floatingCopy(ticket.dom.element);
+        ticketCopy.classList.add('to-cart');
 
-        // Finally, restitute its height on click or set it to 0 depending on its state
-        trigger.addEventListener('click', () =>  {
-            trigger.parentNode.classList.toggle('open');
+        // Once the ticket is closed, let's show the animation
+        setTimeout(() => {
 
-            if (trigger.parentNode.classList.contains('open')) {
-                target.style.height = `${targetHeight}px`
-                console.log(targetHeight)
+            ticket.dom.element.parentNode.appendChild(ticketCopy);
+            ticket.dom.element.classList.add('added');
+            
+            // FIX: à mettre dans la classe Cart
+            // ticket.ticketApp.cart.dom.btn.setAttribute('data-value', ticket.ticketApp.cart.content.length);
+            
+            // finally, add it to cart
+            setTimeout(() => {
+                const container = document.querySelector('.cart-list')
+                // Prepare element's style
+                ticketCopy.classList.remove('to-cart');
+                ticketCopy.classList.add('in-cart');
+                ticketCopy.style.removeProperty('top');
+                ticketCopy.style.removeProperty('left');
+                container.appendChild(ticketCopy);
+                ticket.ticketApp.cart.dom.ticketList.dispatchEvent(new TicketEvent('ticketappend', {
+                    detail: {
+                        parent: container,
+                        element: ticketCopy
+                    }
+                }))
+            }, 300);
+        }, 300);
+    }
 
-                // Test autoscroll 1
-                // target.scrollIntoView({ block: 'start', inline: 'nearest', behavior: 'smooth' });
 
-                // Test autoscroll 2
-                // window.scroll(0, getOffset(target).top);
-            } else {
-                target.style.height = '0px';
-            }
-        });
-    };
 }

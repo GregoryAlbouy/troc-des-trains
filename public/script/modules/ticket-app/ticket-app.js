@@ -129,6 +129,7 @@ export class TicketApp
     {
         this.ticketList.deactivateTicket(ticket)
         this.cart.add(ticket)
+        Utils.addAnimation(ticket)
     }
 
     removeFromCart(ticket)
