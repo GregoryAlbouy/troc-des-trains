@@ -2,8 +2,8 @@ import { ticketApp } from '../../app.js'
 
 export class TdtCartTicket extends HTMLElement
 {
-    static STYLE_URL = './script/components/tdt-cart-ticket/tdt-cart-ticket.style.css'
-    static TEMPLATE_URL = './script/components/tdt-cart-ticket/tdt-cart-ticket.template.html'
+    static STYLE_URL = './app/components/tdt-cart-ticket/tdt-cart-ticket.style.css'
+    static TEMPLATE_URL = './app/components/tdt-cart-ticket/tdt-cart-ticket.template.html'
     
     init(ticketData)
     {
@@ -46,7 +46,7 @@ export class TdtCartTicket extends HTMLElement
 
     getHTML()
     {
-        return fetch(TdTCartTicket.TEMPLATE_URL)
+        return fetch(TdtCartTicket.TEMPLATE_URL)
                 .then((response) => response.text())
     }
 }

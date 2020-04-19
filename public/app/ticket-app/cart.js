@@ -1,6 +1,6 @@
 import { ticketApp } from '../app.js'
 import { TicketAnimation } from './ticket-animation.js'
-import { TdTCartTicket } from "../components/tdt-cart-ticket/tdt-cart-ticket.js"
+import { TdtCartTicket } from "../components/tdt-cart-ticket/tdt-cart-ticket.js"
 
 /**
  * TODO: avoid the need of cartTicketElt in removeById(cartTicketElt, ticketId)
@@ -86,7 +86,7 @@ export class Cart
         }
 
         this.content.forEach((ticket) => {
-            const cartTicket = this.dom.ticketList.appendChild(new TdTCartTicket())
+            const cartTicket = this.dom.ticketList.appendChild(new TdtCartTicket())
             cartTicket.init(ticket.data)
             // cartTicket.removeBtn.onclick = this.remove.bind(this)
         })

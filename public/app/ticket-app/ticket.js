@@ -1,5 +1,3 @@
-// import { TdtTicket } from '../../components/tdt-ticket/TdtTicket.js'
-// import { TdTCartTicket } from './components/tdt-cart-ticket/TdTCartTicket.js'
 import { Utils } from '../modules/utils.js'
 
 export class Ticket
