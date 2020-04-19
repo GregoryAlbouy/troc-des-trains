@@ -1,9 +1,10 @@
 // import { TdtTicket } from '../../components/tdt-ticket/TdtTicket.js'
-import { Utils } from '../utils.js'
+// import { TdTCartTicket } from './components/tdt-cart-ticket/TdTCartTicket.js'
+import { Utils } from '../modules/utils.js'
 
 export class Ticket
 {
-    // ticketApp
+    ticketApp
     data
     dom = {}
     inCart = false
@@ -13,8 +14,9 @@ export class Ticket
     {
         this.ticketApp = ticketApp
         this.data = ticketData
+
         this.createElement()
-        this.setConnectionObserver()
+        // this.setConnectionObserver()
     }
 
     // set inCart(value) { this.inCart = value; console.log(`ticket ${this.data.id} in cart: ${this.inCart}`) }
@@ -44,6 +46,7 @@ export class Ticket
     removeFromCart()
     {
         if (!this.inCart) return
+        console.log('iiioooo')
         this.ticketApp.removeFromCart(this)
     }
 
@@ -75,13 +78,6 @@ export class Ticket
             btnRemove: ticket.querySelector('.close-btn')
         }
 
-        // const
-        //     head = ticket.querySelector('.ticket-head'),
-        //     body = ticket.querySelector('.ticket-body'),
-        //     btnAdd = body.querySelector('.btn--add'),
-        //     btnVendor = body.querySelector('.btn--vendor') // test for remove, to be deleted
-
-        // events
         this.dom.btnAdd.onclick = this.addToCart.bind(this)
         this.dom.btnRemove.onclick = this.removeFromCart.bind(this)
         this.dom.element.addEventListener('ticketappend', this.connectedCallback.bind(this))

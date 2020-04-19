@@ -1,4 +1,4 @@
-import { TicketEvent } from './ticket-event.js'
+import { TicketEvent } from '../ticket-app/ticket-event.js'
 
 export class Utils
 {
@@ -33,7 +33,53 @@ export class Utils
         return clone
     }
 
-    static addAnimation(ticket)
+    static ghostOf(element)
+    {
+        // Get actual position of the original element and create the clone
+        const
+            elementPosition = Utils.getOffset(element),
+            ghost = element.cloneNode(true)
+
+        // Set clone's position to the actual position of original element
+        ghost.style.top = elementPosition.top + 'px'
+        ghost.style.left = elementPosition.left + 'px'
+
+        ghost.classList.add('added')
+
+        return ghost
+    }
+
+    static animateAdd2(ticket)
+    {
+        ticket.close()
+
+        const ghost = Utils.ghostOf(ticket.dom.element)
+        ticket.dom.element.insertAdjacentHTML('beforeBegin', ghost.outerHTML)
+        
+        ticket.dom.element.classList.add('to-cart')
+
+        setTimeout(() => {
+            const container = ticket.ticketApp.cart.dom.ticketList
+
+            ticket.dom.element.classList.remove('to-cart')
+            ticket.dom.element.classList.add('in-cart')
+            ticket.dom.element.style.removeProperty('top');
+            ticket.dom.element.style.removeProperty('left');
+
+            container.appendChild(ticket.dom.element);
+
+            ticket.ticketApp.cart.dom.ticketList.dispatchEvent(new TicketEvent('ticketappend', {
+                detail: {
+                    parent: container,
+                    element: ticket.dom.element
+                }
+            }))
+        }, 300)
+
+
+    }
+
+    static animateAdd(ticket)
     {
         // Close the active ticket first
         ticket.close()
@@ -68,6 +114,35 @@ export class Utils
                 }))
             }, 300);
         }, 300);
+    }
+
+    static animateRemove(ticket)
+    {
+        // Fade out then delete the cart item
+        ticket.dom.element.style.opacity = '0';
+
+        return new Promise((resolve, reject => {
+            setTimeout(() => resolve(), 1000)
+        }))
+
+        setTimeout(() => {
+            // Remove the <li> element containing the ticket
+            ticket.dom.element.parentNode.removeChild(ticket.dom.element);
+
+            // Find in the results section the deactivated ticket and reactivate it
+            let ticketResultList = document.querySelectorAll('.ticket-list-container .ticket');
+            for (const ticket of ticketResultList) {
+                if (parseInt(ticket.getAttribute('data-id')) == id) {
+                    ticket.classList.remove('added');
+                }
+            }
+
+            // Finally, update data
+            cartContent -= 1;
+            cartIcon.setAttribute('data-value', cartContent);
+            totalCost -= getPrice(id);
+            updateCostDisplay();
+        }, 1000);
     }
 
 

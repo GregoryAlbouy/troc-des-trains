@@ -1,4 +1,4 @@
-import { TicketEvent } from '../ticket-event.js';
+import { TicketEvent } from './ticket-event.js';
 
 export class TicketList
 {

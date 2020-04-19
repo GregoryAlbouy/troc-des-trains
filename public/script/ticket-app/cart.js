@@ -1,3 +1,10 @@
+import { ticketApp } from '../app.js'
+import { TicketAnimation } from './ticket-animation.js'
+import { TdTCartTicket } from "../components/tdt-cart-ticket/tdt-cart-ticket.js"
+
+/**
+ * TODO: avoid the need of cartTicketElt in removeById(cartTicketElt, ticketId)
+ */
 export class Cart
 {
     content = []
@@ -11,34 +18,42 @@ export class Cart
     constructor()
     {
         this.create()
-
-
-        const updateDisplay = () => {
-            console.log('event activated')
-            this.dom.btn.setAttribute('data-value', this.content.length)
-        }
-        const handler = () => updateDisplay.apply(this)
-
-        this.dom.ticketList.addEventListener('ticketappend', handler)
     }
 
     add(ticket)
     {
         this.content.push(ticket)
         ticket.inCart = true
-        this.updateTotal()
+        this.updateDisplay()
+        this.render() // test
     }
 
     remove(ticket)
     {
         this.content = this.content.filter((match) => match !== ticket)
         ticket.inCart = false
-        this.updateTotal()
+        this.updateDisplay()
+        console.log(this.content)
     }
 
-    updateTotal()
+    removeById(cartTicketElt, ticketId)
+    {
+        if (!this.content.find(ticket => ticket.data.id === ticketId)) return
+
+        this.content = this.content.filter((match) => match.data.id !== ticketId)
+
+        new TicketAnimation('cartremove', cartTicketElt).promise
+            .then(() => {
+                this.dom.ticketList.removeChild(cartTicketElt)
+                this.updateDisplay()
+            })
+    }
+
+    updateDisplay()
     {
         this.dom.total.textContent = `${parseFloat(this.getTotal()).toFixed(2)}€`
+        this.dom.btn.setAttribute('data-value', this.content.length)
+
     }
 
     getTotal()
@@ -61,6 +76,20 @@ export class Cart
         this.dom.btn.addEventListener('click', () => this.dom.element.classList.toggle('on'))
         
         document.body.append(this.dom.element)
+    }
+
+    render()
+    {
+        // reset dom content first
+        while (this.dom.ticketList.lastElementChild) {
+            this.dom.ticketList.removeChild(this.dom.ticketList.lastElementChild)
+        }
+
+        this.content.forEach((ticket) => {
+            const cartTicket = this.dom.ticketList.appendChild(new TdTCartTicket())
+            cartTicket.init(ticket.data)
+            // cartTicket.removeBtn.onclick = this.remove.bind(this)
+        })
     }
 
     getHTML()

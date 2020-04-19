@@ -1,8 +1,8 @@
 import { Cart } from './cart.js'
 import { TicketList } from './ticket-list.js'
 import { Ticket } from './ticket.js'
-import { ticketDataList } from './ticketData.js'
-import { Utils } from '../utils.js'
+import { ticketDataList } from './ticket-data.js'
+import { Utils } from '../modules/utils.js'
 
 export class TicketApp
 {
@@ -125,15 +125,25 @@ export class TicketApp
 
     }
 
+    removeFromCartById(cartTicketElt, ticketId)
+    {
+        this.cart.removeById(cartTicketElt, ticketId)
+        console.log('placeholder: reactivate ticket in ticket list')
+    }
+
     addToCart(ticket)
     {
         this.ticketList.deactivateTicket(ticket)
         this.cart.add(ticket)
-        Utils.addAnimation(ticket)
+        // Utils.animateAdd2(ticket)
     }
 
     removeFromCart(ticket)
     {
+        // Utils.animateRemove(ticket)
+        //     .then(() => {
+        //         console.log(this)
+        //     })
         this.cart.remove(ticket)
         this.ticketList.reactivateTicket(ticket)
     }
@@ -144,5 +154,10 @@ export class TicketApp
             this.ticketList.add(new Ticket(this, ticketData))
         })
         this.ticketList.render()
+    }
+
+    getTicketFromId(ticketId)
+    {
+        return ticketDataList.find((ticket => ticket.id === ticketId))
     }
 }
