@@ -4,6 +4,15 @@ import { Ticket } from './ticket.js'
 import { ticketDataList } from './ticket-data.js'
 import { Utils } from '../modules/utils.js'
 
+/**
+ * TODO: choose between:
+ * A) cart ticket element instance as a property of Ticket instance, as it is for those from TicketList: new Ticket().dom.element === <tdt-ticket>
+ * B) on contrary, use the cart ticket model, independant of Ticket instance: content.forEach => new TdtCartTicket()
+ * A -> references track is easier, but DOM cart ticket will still be referenced (ticket.domCart.Element), might cause problems when a ticket
+ * is added after being removed. Workaround: set ticket.domCart.element to null on cart removal
+ * B -> code more lightweight, but might need some tricks, eg cart method removeById(ticketElt, ticketId)
+ *                                                                                   ^^^^^^^^^
+ */
 export class TicketApp
 {
     cart = new Cart()
