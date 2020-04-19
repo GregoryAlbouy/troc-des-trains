@@ -1,6 +1,6 @@
 import { ticketApp } from '../../app.js'
 
-export class TdTCartTicket extends HTMLElement
+export class TdtCartTicket extends HTMLElement
 {
     static STYLE_URL = './script/components/tdt-cart-ticket/tdt-cart-ticket.style.css'
     static TEMPLATE_URL = './script/components/tdt-cart-ticket/tdt-cart-ticket.template.html'
@@ -50,5 +50,3 @@ export class TdTCartTicket extends HTMLElement
                 .then((response) => response.text())
     }
 }
-
-// customElements.define('tdt-cart-ticket', TdTCartTicket)
