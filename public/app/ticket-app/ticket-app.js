@@ -1,28 +1,31 @@
 import { Cart } from './cart.js'
-import { TicketList } from './ticket-list.js'
+import { SearchResult } from './search-result.js'
 import { Ticket } from './ticket.js'
-import { ticketDataList } from './ticket-data.js'
+// import { ticketDataList } from './ticket-data.js'
 import { Utils } from '../modules/utils.js'
+import { TicketAnimation } from './ticket-animation.js'
 
 /**
- * TODO: choose between:
- * A) cart ticket element instance as a property of Ticket instance, as it is for those from TicketList: new Ticket().dom.element === <tdt-ticket>
- * B) on contrary, use the cart ticket model, independant of Ticket instance: content.forEach => new TdtCartTicket()
- * A -> references track is easier, but DOM cart ticket will still be referenced (ticket.domCart.Element), might cause problems when a ticket
- * is added after being removed. Workaround: set ticket.domCart.element to null on cart removal
- * B -> code more lightweight, but might need some tricks, eg cart method removeById(ticketElt, ticketId)
- *                                                                                   ^^^^^^^^^
+ * TODO: separate data file for vendors and make a join to display infos on tickets
+ * [ { name, picture, rating, comments, reviews } ... ]
  */
 export class TicketApp
 {
+    TICKET_DATA_URL = 'http://localhost/trocdestrains/data/tickets.json'
     cart = new Cart()
-    ticketList = new TicketList()
+    searchResult = new SearchResult()
     
     constructor()
     {
-        const matchedList = ticketDataList // has to be the results of the search
+        window.addEventListener('clickadd', this.addToCart.bind(this))
+        window.addEventListener('clickremove', this.removeFromCart.bind(this))
 
-        this.loadTicketsInTicketList(matchedList)
+        this.init()
+
+        // TODO: make it conditionnal to the user search
+        // const matchedList = this.getTicketTable()
+        //     .then()
+        // this.loadTicketsInTicketList(matchedList)
         /*
         // Declarations
 
@@ -134,39 +137,64 @@ export class TicketApp
 
     }
 
-    removeFromCartById(cartTicketElt, ticketId)
+    async init()
     {
-        this.cart.removeById(cartTicketElt, ticketId)
-        console.log('placeholder: reactivate ticket in ticket list')
+        // TODO: make it a selected data from user search request
+        const ticketTable = await this.getTicketTable()
+        this.renderSearchResult(ticketTable)
     }
 
-    addToCart(ticket)
+    async getTicketTable()
     {
-        this.ticketList.deactivateTicket(ticket)
-        this.cart.add(ticket)
-        // Utils.animateAdd2(ticket)
+        return await (await fetch(this.TICKET_DATA_URL)).json()
     }
 
-    removeFromCart(ticket)
+    addToCart(event)
     {
-        // Utils.animateRemove(ticket)
-        //     .then(() => {
-        //         console.log(this)
-        //     })
-        this.cart.remove(ticket)
-        this.ticketList.reactivateTicket(ticket)
+        const ticket = this.getTicketById(event.detail.id)
+        const ticketElt = event.detail.elt
+
+        if (ticket.inCart) return
+
+        (async () => {
+            await ticketElt.close()
+            new TicketAnimation('addTicket', ticketElt, 600)
+            ticketElt.classList.add('added') //  TODO: hande fully in JS? without css class
+            this.cart.add(ticket)
+        })()
     }
 
-    loadTicketsInTicketList(matchedList)
+    /**
+     * TODO: move here animations, keep only logic in cart instance (same for searchResult)
+     */
+    removeFromCart(event)
     {
-        matchedList.forEach((ticketData) => {
-            this.ticketList.add(new Ticket(this, ticketData))
+        const ticket = this.getTicketById(event.detail.id)
+        const ticketElt = event.detail.elt
+
+        if (!ticket.inCart) return
+        this.cart.remove(ticketElt, ticket)
+    }
+
+    renderSearchResult(ticketTable)
+    {
+        ticketTable.forEach((ticketData) => {
+            this.searchResult.add(new Ticket(ticketData))
         })
-        this.ticketList.render()
+        this.searchResult.render()
     }
 
-    getTicketFromId(ticketId)
+    /**
+     * A) from database: loose the setted properties in Ticket instance ==> make a new instance??
+     * ===> return new Ticket(data.find())
+     * /!\ two different instances: might be a mess dealing with inCart state 
+     * 
+     * B) from ticket instance: seems more logical.
+     * Need to find a way to get it without using searchResult instance content
+     */
+    getTicketById(ticketId)
     {
-        return ticketDataList.find((ticket => ticket.id === ticketId))
+        // return ticketDataList.find((ticket => ticket.id === ticketId))
+        return this.searchResult.content.find((ticket => ticket.data.id === ticketId))
     }
 }

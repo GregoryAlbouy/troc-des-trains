@@ -1,0 +1,191 @@
+[
+    {
+        "id": 0,
+        "vendorName": "Ophélie Martin",
+        "vendorPicture": "https://picsum.photos/200/300",
+        "price": "99.49",
+        "conditions": "Tous publics",
+        "steps": [
+            {
+                "startStation": "Paris Gare de Lyon",
+                "endStation": "Montpellier St-Roch",
+                "startTime": "2020-12-01T09:10Z",
+                "endTime": "2020-12-01T12:31Z"
+            }
+        ]
+    },
+    {
+        "id": 1,
+        "vendorName": "Jacques Duchamp",
+        "vendorPicture": "https://picsum.photos/200/300",
+        "price": "99.50",
+        "conditions": "Tous publics",
+        "steps": [
+            {
+                "startStation": "Paris Gare de Lyon",
+                "endStation": "Montpellier St-Roch",
+                "startTime": "2020-12-01T09:10",
+                "endTime": "2020-12-01T12:31"
+            }
+        ]
+    },
+    {
+        "id": 2,
+        "vendorName": "Jean Dupont",
+        "vendorPicture": "https://picsum.photos/200/300",
+        "price": "79.00",
+        "conditions": "Carte Sénior",
+        "steps": [
+            {
+                "startStation": "Paris Gare de Lyon",
+                "endStation": "Montpellier St-Roch",
+                "startTime": "2020-12-01T11:04",
+                "endTime": "2020-12-01T14:38"
+            }
+        ]
+    },
+    {
+        "id": 3,
+        "vendorName": "Arnaud Fornelli",
+        "vendorPicture": "https://picsum.photos/200/300",
+        "price": "49.99",
+        "conditions": "Carte Jeune",
+        "steps": [
+            {
+                "startStation": "Paris Gare de Lyon",
+                "endStation": "Lilles Flandres",
+                "startTime": "2020-12-01T12:17",
+                "endTime": "2020-12-01T14:25"
+            },
+            {
+                "startStation": "Lilles Flandres",
+                "endStation": "Montpellier St-Roch",
+                "startTime": "2020-12-01T15:05",
+                "endTime": "2020-12-01T19:42"
+            }
+
+        ]
+    },
+    {
+        "id": 4,
+        "vendorName": "Arnaud Fornelli",
+        "vendorPicture": "https://picsum.photos/200/300",
+        "price": "49.99",
+        "conditions": "Carte Jeune",
+        "steps": [
+            {
+                "startStation": "Paris Gare de Lyon",
+                "endStation": "Lilles Flandres",
+                "startTime": "2020-12-01T12:17",
+                "endTime": "2020-12-01T14:25"
+            },
+            {
+                "startStation": "Lilles Flandres",
+                "endStation": "Montpellier St-Roch",
+                "startTime": "2020-12-01T15:05",
+                "endTime": "2020-12-01T19:42"
+            }
+
+        ]
+    },
+    {
+        "id": 5,
+        "vendorName": "Arnaud Fornelli",
+        "vendorPicture": "https://picsum.photos/200/300",
+        "price": "49.99",
+        "conditions": "Carte Jeune",
+        "steps": [
+            {
+                "startStation": "Paris Gare de Lyon",
+                "endStation": "Lilles Flandres",
+                "startTime": "2020-12-01T12:17",
+                "endTime": "2020-12-01T14:25"
+            },
+            {
+                "startStation": "Lilles Flandres",
+                "endStation": "Montpellier St-Roch",
+                "startTime": "2020-12-01T15:05",
+                "endTime": "2020-12-01T19:42"
+            }
+
+        ]
+    },
+    {
+        "id": 6,
+        "vendorName": "Arnaud Fornelli",
+        "vendorPicture": "https://picsum.photos/200/300",
+        "price": "49.99",
+        "conditions": "Carte Jeune",
+        "steps": [
+            {
+                "startStation": "Paris Gare de Lyon",
+                "endStation": "Lilles Flandres",
+                "startTime": "2020-12-01T12:17",
+                "endTime": "2020-12-01T14:25"
+            },
+            {
+                "startStation": "Lilles Flandres",
+                "endStation": "Montpellier St-Roch",
+                "startTime": "2020-12-01T15:05",
+                "endTime": "2020-12-01T19:42"
+            }
+
+        ]
+    },
+    {
+        "id": 7,
+        "vendorName": "Arnaud Fornelli",
+        "vendorPicture": "https://picsum.photos/200/300",
+        "price": "49.99",
+        "conditions": "Carte Jeune",
+        "steps": [
+            {
+                "startStation": "Paris Gare de Lyon",
+                "endStation": "Lilles Flandres",
+                "startTime": "2020-12-01T12:17",
+                "endTime": "2020-12-01T14:25"
+            },
+            {
+                "startStation": "Lilles Flandres",
+                "endStation": "Montpellier St-Roch",
+                "startTime": "2020-12-01T15:05",
+                "endTime": "2020-12-01T19:42"
+            }
+
+        ]
+    },
+    {
+        "id": 8,
+        "vendorName": "Arnaud Fornelli",
+        "vendorPicture": "https://picsum.photos/200/300",
+        "price": "49.99",
+        "conditions": "Carte Jeune",
+        "steps": [
+            {
+                "startStation": "Paris Gare de Lyon",
+                "endStation": "Lilles Flandres",
+                "startTime": "2020-12-01T12:17",
+                "endTime": "2020-12-01T14:25"
+            },
+            {
+                "startStation": "Lilles Flandres",
+                "endStation": "Lyon Part-Dieu",
+                "startTime": "2020-12-01T15:05",
+                "endTime": "2020-12-01T19:42"
+            },
+            {
+                "startStation": "Lyon Part-Dieu",
+                "endStation": "Bordeaux St-Jean",
+                "startTime": "2020-12-01T19:55",
+                "endTime": "2020-12-01T21:17"
+            },
+            {
+                "startStation": "Lilles Flandres",
+                "endStation": "Montpellier St-Roch",
+                "startTime": "2020-12-01T21:34",
+                "endTime": "2020-12-01T23:55"
+            }
+
+        ]
+    }
+]

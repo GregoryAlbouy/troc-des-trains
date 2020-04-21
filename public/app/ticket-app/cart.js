@@ -11,7 +11,7 @@ export class Cart
     dom = {
         element: null,
         btn: document.querySelector('.header-btn--cart'),
-        ticketList: null,
+        container: null,
         total: null
     }
 
@@ -22,38 +22,30 @@ export class Cart
 
     add(ticket)
     {
+        if (ticket.inCart) return
         this.content.push(ticket)
         ticket.inCart = true
         this.updateDisplay()
         this.render() // test
     }
 
-    remove(ticket)
+    remove(cartTicketElt, ticket)
     {
-        this.content = this.content.filter((match) => match !== ticket)
-        ticket.inCart = false
-        this.updateDisplay()
-        console.log(this.content)
-    }
+        if (!this.content.find(match => match === ticket)) return
 
-    removeById(cartTicketElt, ticketId)
-    {
-        if (!this.content.find(ticket => ticket.data.id === ticketId)) return
+        this.content = this.content.filter((match) => match !== ticket);
 
-        this.content = this.content.filter((match) => match.data.id !== ticketId)
-
-        new TicketAnimation('cartremove', cartTicketElt).promise
-            .then(() => {
-                this.dom.ticketList.removeChild(cartTicketElt)
-                this.updateDisplay()
-            })
+        (async () => {
+            await new TicketAnimation('fadeout', cartTicketElt, 1000)
+            this.dom.container.removeChild(cartTicketElt)
+            this.updateDisplay()
+        })()
     }
 
     updateDisplay()
     {
         this.dom.total.textContent = `${parseFloat(this.getTotal()).toFixed(2)}€`
         this.dom.btn.setAttribute('data-value', this.content.length)
-
     }
 
     getTotal()
@@ -70,7 +62,7 @@ export class Cart
         this.dom.element.classList.add('menu', 'menu--cart')
         this.dom.element.innerHTML = this.getHTML()
         
-        this.dom.ticketList = this.dom.element.querySelector('.cart-list')
+        this.dom.container = this.dom.element.querySelector('.cart-list')
         this.dom.total = this.dom.element.querySelector('.total-amount')
 
         this.dom.btn.addEventListener('click', () => this.dom.element.classList.toggle('on'))
@@ -81,12 +73,13 @@ export class Cart
     render()
     {
         // reset dom content first
-        while (this.dom.ticketList.lastElementChild) {
-            this.dom.ticketList.removeChild(this.dom.ticketList.lastElementChild)
+        while (this.dom.container.lastElementChild) {
+            this.dom.container.removeChild(this.dom.container.lastElementChild)
         }
 
         this.content.forEach((ticket) => {
-            const cartTicket = this.dom.ticketList.appendChild(new TdtCartTicket())
+            // TODO: replace with ticket.renderCartTicket OR ticket.render('cart')
+            const cartTicket = this.dom.container.appendChild(new TdtCartTicket())
             cartTicket.init(ticket.data)
             // cartTicket.removeBtn.onclick = this.remove.bind(this)
         })

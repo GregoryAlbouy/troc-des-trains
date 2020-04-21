@@ -1,0 +1,7 @@
+:host {
+    transform: rotate(10deg);
+    width: 400px;
+    height: 400px;
+    background-color: blue;
+    display: block;
+}

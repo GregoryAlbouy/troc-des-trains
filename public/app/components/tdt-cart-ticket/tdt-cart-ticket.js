@@ -1,17 +1,18 @@
 import { ticketApp } from '../../app.js'
+import { Utils } from '../../modules/utils.js'
+import { TicketEvent } from '../../ticket-app/ticket-event.js'
 
 export class TdtCartTicket extends HTMLElement
 {
-    static STYLE_URL = './app/components/tdt-cart-ticket/tdt-cart-ticket.style.css'
-    static TEMPLATE_URL = './app/components/tdt-cart-ticket/tdt-cart-ticket.template.html'
+    STYLE_URL = './app/components/tdt-cart-ticket/tdt-cart-ticket.style.css'
+    TEMPLATE_URL = './app/components/tdt-cart-ticket/tdt-cart-ticket.template.html'
     
-    init(ticketData)
+    async init(ticketData)
     {
-        this.getHTML()
-            .then((template) => {
-                this.innerHTML = template
-                this.set(ticketData)
-            })
+        this.innerHTML = await this.getTemplate()
+        // const style = document.createElement('style')
+        // this.insertAdjacentElement('afterbegin', style)
+        this.set(ticketData)
     }
 
     set(ticketData)
@@ -26,27 +27,32 @@ export class TdtCartTicket extends HTMLElement
             priceElt       = this.querySelector('.price'),
             removeBtn      = this.querySelector('.close-btn')
 
-
         this.classList.add('ticket', 'in-cart')
         this.style.display = 'block'
 
-        startTimeElt.setAttribute('datetime', `2020-01-16 ${ticketData.startTime}`)
-        endTimeElt.setAttribute('datetime', `2020-01-16 ${ticketData.endTime}`)
+        startTimeElt.setAttribute('datetime', ticketData.startTime)
+        endTimeElt.setAttribute('datetime', ticketData.endTime)
 
-        dateElt.textContent        = '26-01-2020'
+        dateElt.textContent        = ticketData.startDate
         startTimeElt.textContent   = ticketData.startTime
         endTimeElt.textContent     = ticketData.endTime
         durationElt.textContent    = ticketData.totalDuration
-        connectionsElt.textContent = ticketData.connections
+        connectionsElt.textContent = ticketData.connectionsDisplay
         conditionsElt.textContent  = ticketData.conditions
-        priceElt.textContent       = ticketData.price
+        priceElt.textContent       = ticketData.priceDisplay
 
-        removeBtn.onclick = () => ticketApp.removeFromCartById(this, ticketData.id)
+        removeBtn.onclick = () => window.dispatchEvent(new TicketEvent('clickremove', {
+            detail: { id: ticketData.id, elt: this }
+        }))
     }
 
-    getHTML()
+    async getTemplate()
     {
-        return fetch(TdtCartTicket.TEMPLATE_URL)
-                .then((response) => response.text())
+        return await (await fetch(this.TEMPLATE_URL)).text()
+    }
+
+    async getStyle()
+    {
+        return await (await fetch(this.STYLE_URL)).text()
     }
 }
