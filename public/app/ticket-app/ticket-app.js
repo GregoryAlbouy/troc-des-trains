@@ -1,9 +1,12 @@
 import { Cart } from './cart.js'
+import { Searchbox } from './searchbox.js'
 import { SearchResult } from './search-result.js'
 import { Ticket } from './ticket.js'
 // import { ticketDataList } from './ticket-data.js'
-import { Utils } from '../modules/utils.js'
+// import { Utils } from '../modules/utils.js'
 import { TicketAnimation } from './ticket-animation.js'
+import { debugTicket } from '../app.js'
+
 
 /**
  * TODO: separate data file for vendors and make a join to display infos on tickets
@@ -13,6 +16,7 @@ export class TicketApp
 {
     TICKET_DATA_URL = 'http://localhost/trocdestrains/data/tickets.json'
     cart = new Cart()
+    searchbox = new Searchbox()
     searchResult = new SearchResult()
     
     constructor()

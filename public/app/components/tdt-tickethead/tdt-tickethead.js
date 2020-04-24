@@ -1,7 +1,7 @@
 export class TdtTickethead extends HTMLElement
 {
-    static STYLE_URL = './app/components/tdt-tickethead/tdt-tickethead.style.css'
-    static TEMPLATE_URL = './app/components/tdt-tickethead/tdt-tickethead.template.html'
+    STYLE_URL = './app/components/tdt-tickethead/tdt-tickethead.style.css'
+    TEMPLATE_URL = './app/components/tdt-tickethead/tdt-tickethead.template.html'
 
     // async connectedCallback()
     // {
@@ -39,6 +39,6 @@ export class TdtTickethead extends HTMLElement
 
     async getHTML()
     {
-        return await (await fetch(TdtTickethead.TEMPLATE_URL)).text()
+        return await (await fetch(this.TEMPLATE_URL)).text()
     }
 }

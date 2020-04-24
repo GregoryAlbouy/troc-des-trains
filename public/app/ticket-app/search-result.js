@@ -1,9 +1,12 @@
 import { TicketEvent } from './ticket-event.js';
 import { TdtTicket } from '../components/tdt-ticket/tdt-ticket.js';
+import { debugTicket } from '../app.js'
 
 export class SearchResult
 {
-    content = []
+    content = [
+        debugTicket
+    ]
 
     render()
     {
@@ -11,6 +14,7 @@ export class SearchResult
         const appendTicket = (ticket) => {
             const resultTicket = container.appendChild(new TdtTicket())
             resultTicket.init(ticket.data)
+            if (ticket.inCart) resultTicket.classList.add('added')
         }
         const dispatchLoadEvent = (ticket) => ticket.dispatchEvent(new TicketEvent('allloaded'))
 

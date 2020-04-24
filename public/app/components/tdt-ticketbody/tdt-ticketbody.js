@@ -1,15 +1,14 @@
-import { ticketApp } from '../../app.js'
 import { TicketEvent } from '../../ticket-app/ticket-event.js'
 import { TicketAnimation } from '../../ticket-app/ticket-animation.js'
 
 export class TdtTicketbody extends HTMLElement
 {
-    static STYLE_URL = './app/components/tdt-ticketbody/tdt-ticketbody.style.css'
-    static TEMPLATE_URL = './app/components/tdt-ticketbody/tdt-ticketbody.template.html'
+    STYLE_URL = './app/components/tdt-ticketbody/tdt-ticketbody.style.css'
+    TEMPLATE_URL = './app/components/tdt-ticketbody/tdt-ticketbody.template.html'
 
     async getHTML()
     {
-        return await (await fetch(TdtTicketbody.TEMPLATE_URL)).text()
+        return await (await fetch(this.TEMPLATE_URL)).text()
     }
 
     async set(ticketData)

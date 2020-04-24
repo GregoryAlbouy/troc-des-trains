@@ -1,5 +1,3 @@
-import { ticketApp } from '../../app.js'
-import { Utils } from '../../modules/utils.js'
 import { TicketEvent } from '../../ticket-app/ticket-event.js'
 
 export class TdtCartTicket extends HTMLElement
