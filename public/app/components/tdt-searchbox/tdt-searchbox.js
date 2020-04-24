@@ -12,7 +12,7 @@ export class TdtSearchbox extends HTMLElement
 
     async getHTML()
     {
-        return await (await fetch(this.TEMPLATE_URL)).text()
+        return (await fetch(this.TEMPLATE_URL)).text()
     }
 
     connectedCallback()

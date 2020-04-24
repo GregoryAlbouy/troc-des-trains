@@ -4,8 +4,7 @@ export class Searchbox
 {
     constructor()
     {
-        const searchboxElt = new TdtSearchbox()
         const container = document.querySelector('.search-section')
-        container.appendChild(searchboxElt)
+        const searchboxElt = container.appendChild(new TdtSearchbox)
     }
 }
