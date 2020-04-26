@@ -1,0 +1,35 @@
+<div class="ticket-head">
+
+    <div class="l-summary">
+    
+        <h3 class="journey-date"><slot name="date"></slot></h3>
+    
+        <ul class="journey-info">
+    
+            <li class="journey-step">
+                <span class="step-time"><slot name="start-time"></slot></span>
+                <span class="step-station">Paris<span class="desktop-only"> Gare de Lyon</span></span>
+            </li>
+            <li class="journey-step">
+                <span class="step-time"><slot name="end-time"></slot></span>
+                <span class="step-station">Montpellier<span class="desktop-only"> St-Roch</span></span>
+            </li>
+            <li class="journey-summary">
+                <span class="journey-duration"><slot name="duration"></slot></span>
+                <span class="journey-connections"><slot name="connections"></slot></span>
+            </li>
+    
+        </ul>
+    
+        <p class="conditions"><slot name="conditions"></slot></p>
+    
+    </div>
+    
+    <div class="l-price">
+        <p class="price"><slot name="price"></slot></p>
+    </div>
+
+    <button class="js-remove-btn">
+        <span class="line"></span>
+    </button>
+</div>

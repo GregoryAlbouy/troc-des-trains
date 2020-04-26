@@ -1,0 +1,27 @@
+button {
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 0 1rem;
+  border: var(--fixed-width) solid #202060;
+  border-radius: 0.5rem;
+  outline: none;
+  box-sizing: border-box;
+  background: none;
+  cursor: pointer;
+  color: #202060;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: 700;
+  letter-spacing: 0.2rem;
+  text-transform: uppercase;
+}
+button:hover {
+  color: #FFF;
+  background: #202060;
+}
+
+:host-context([plain]) button {
+  background: #202060;
+  color: #FFF;
+}

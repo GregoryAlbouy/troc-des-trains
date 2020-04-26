@@ -5,9 +5,10 @@
   "main": "",
   "scripts": {
     "sass:watch": "sass --watch src/scss/main.scss public/style/main.css",
-    "sass:build": "sass --style=compressed --no-source-map src/scss/main.scss public/style/main.css"
+    "sass:watch-c": "sass --watch --no-source-map public/app/components:public/app/components",
+    "sass:build": "sass --style=compressed --no-source-map src/scss/main.scss public/style/main.css && sass --style=compressed --no-source-map public/app/components:public/app/components"
   },
-  "repository": {
+  "repository": { 
     "type": "git",
     "url": "git+https://github.com/GregoryAlbouy/troc-des-trains.git"
   },

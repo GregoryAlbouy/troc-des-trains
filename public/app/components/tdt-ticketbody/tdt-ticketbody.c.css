@@ -1,0 +1,347 @@
+*, *::before, *::after {
+  padding: 0;
+  margin: 0;
+  border: none;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.ticket-body {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: space-between;
+  background: #EEE;
+  will-change: height;
+}
+
+ol {
+  list-style: none;
+}
+
+.l-vendor::after, .l-journey::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 50%;
+  width: 2.4rem;
+  height: 20%;
+  background: #F9F9F9;
+  transform: translateY(-50%);
+}
+
+.l-journey {
+  position: relative;
+  width: 73.8rem;
+  padding: 4.8rem 3.6rem 13.2rem;
+}
+.l-journey::before {
+  left: -1rem;
+  border-top-right-radius: 2rem;
+  border-bottom-right-radius: 2rem;
+}
+.l-journey h3 {
+  font-weight: initial;
+  margin-bottom: 4.8rem;
+  font-size: 2.4rem;
+  text-align: center;
+  text-transform: uppercase;
+}
+.l-journey .journey-steps {
+  margin-bottom: 2rem;
+}
+.l-journey .journey-steps .connection::before, .l-journey .journey-steps .step::before {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 6.6rem;
+  width: var(--fixed-width);
+}
+.l-journey .journey-steps .step {
+  position: relative;
+}
+.l-journey .journey-steps .step::before {
+  /* journey trackline */
+  top: 1.2rem;
+  height: 15.5rem;
+  background: #000;
+}
+.l-journey .journey-steps .connection {
+  position: relative;
+  height: 9.6rem;
+}
+.l-journey .journey-steps .connection::before {
+  top: -0.6rem;
+  height: 100%;
+  background: linear-gradient(to bottom, black 0%, 50%, transparent 50%) top/100% 1.1rem repeat;
+}
+.l-journey .journey-steps .step-time {
+  display: inline-block;
+  width: 4.8rem;
+  color: #666;
+  font-size: 2rem;
+  text-align: right;
+  vertical-align: top;
+}
+.l-journey .journey-steps .step-info {
+  display: inline-block;
+  margin-left: 3.6rem;
+}
+.l-journey .journey-steps .step-start .step-info {
+  margin-bottom: 4.8rem;
+}
+.l-journey .journey-steps .step-duration {
+  position: relative;
+  left: 10rem;
+  margin-bottom: 4.8rem;
+  color: #666;
+  font-size: 1.4rem;
+}
+.l-journey .journey-steps .step-duration::before {
+  /* clock icon */
+  content: "";
+  display: inline-block;
+  position: relative;
+  top: -0.1rem;
+  vertical-align: middle;
+  width: 1.6rem;
+  height: 1.6rem;
+  margin-right: 0.6rem;
+  background: url("./images/ticket-clock.svg") center/90% no-repeat;
+}
+.l-journey .journey-steps .train-station {
+  position: relative;
+  margin-bottom: 1.2rem;
+  font-size: 2rem;
+  font-weight: initial;
+  text-transform: uppercase;
+}
+.l-journey .journey-steps .train-station::before {
+  /* bullet-point */
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0.6rem;
+  left: -2.4rem;
+  width: 5px;
+  height: 5px;
+  background: url("./images/ticket-bulletpoint.svg") center/contain no-repeat;
+}
+.l-journey .journey-steps .train-info {
+  color: #666;
+  font-size: 1.4rem;
+}
+.l-journey .journey-steps .connection-duration {
+  position: absolute;
+  top: calc(50% - 1rem);
+  left: 11rem;
+  color: #666;
+  font-size: 1.4rem;
+  font-style: italic;
+  transform: translateY(-50%);
+}
+.l-journey .journey-conditions {
+  position: relative;
+  z-index: 1;
+  /* button won't work otherwise */
+  float: right;
+  width: 26rem;
+  padding-top: 0.4rem;
+  padding-left: 3rem;
+  margin-bottom: 0.4rem;
+  overflow: hidden;
+  color: #666;
+  font-size: 1.4rem;
+}
+.l-journey .journey-conditions::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 2rem;
+  height: 2rem;
+  background: url("../public/images/ticket-warning.svg") bottom/contain no-repeat;
+}
+.l-journey .journey-conditions .conditions-title {
+  font-weight: initial;
+  margin-bottom: 2rem;
+}
+.l-journey .journey-conditions .conditions-btn {
+  cursor: pointer;
+  text-decoration: underline;
+}
+.l-journey .journey-conditions .conditions-detail {
+  overflow: hidden;
+}
+.l-journey .journey-conditions .conditions-content {
+  line-height: 1.8rem;
+  transform: translateY(-10rem);
+  transition: transform 0.2s;
+}
+.l-journey .journey-conditions .conditions-detail[open] .conditions-content {
+  transform: translateY(0rem);
+}
+.l-journey .journey-duration {
+  margin-bottom: 4rem;
+  margin-left: 8.8rem;
+  color: #666;
+  font-size: 2rem;
+  font-style: italic;
+}
+.l-journey .journey-add {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: absolute;
+  right: 3.6rem;
+  bottom: 3.6rem;
+  left: 3.6rem;
+  height: 6rem;
+}
+.l-journey .journey-add .price {
+  color: #202060;
+  font-size: 4.8rem;
+  font-weight: 700;
+}
+.l-journey .journey-add tdt-button {
+  width: 33.3rem;
+  height: 100%;
+  font-size: 2rem;
+}
+
+.l-vendor {
+  position: relative;
+  width: 33.3rem;
+  padding: 3.6rem;
+  border-left: var(--fixed-width) dotted rgba(0, 0, 0, 0.2);
+}
+.l-vendor::after {
+  right: -1rem;
+  border-top-left-radius: 2rem;
+  border-bottom-left-radius: 2rem;
+}
+.l-vendor h3 {
+  margin-bottom: 2rem;
+  font-size: 1.8rem;
+  font-weight: 700;
+  text-align: center;
+  text-transform: uppercase;
+}
+.l-vendor .vendor-display {
+  display: flex;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+.l-vendor .vendor-display .img-container {
+  width: 8rem;
+  height: 8rem;
+  border-radius: 50%;
+  margin-right: 2rem;
+  overflow: hidden;
+  box-shadow: 0 0 2rem 0 rgba(0, 0, 0, 0.15);
+  vertical-align: middle;
+}
+.l-vendor .vendor-display .img-container img {
+  max-width: 100%;
+  height: auto;
+}
+.l-vendor .vendor-display .infos {
+  vertical-align: middle;
+}
+.l-vendor .vendor-display .vendor-name {
+  margin-bottom: 1rem;
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+.l-vendor .vendor-display .vendor-notation {
+  position: relative;
+  width: max-content;
+  left: -0.2rem;
+  font-size: 0;
+}
+.l-vendor .vendor-display .vendor-notation::after {
+  content: attr(data-number);
+  display: block;
+  position: absolute;
+  left: calc(100% + 1rem);
+  bottom: -0.2rem;
+  height: 2rem;
+  color: #666;
+  font-size: 1.2rem;
+  white-space: nowrap;
+}
+.l-vendor .vendor-display .star {
+  display: inline-block;
+  position: relative;
+  width: 2.4rem;
+  height: 2.4rem;
+  background: #60F0C0;
+  /* star-shape */
+  -webkit-clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+  clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+  transform: scale(1.1);
+  transform-origin: center;
+  /* Same star */
+}
+.l-vendor .vendor-display .star--empty {
+  transform-origin: center;
+}
+.l-vendor .vendor-display .star--empty::after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  width: 2.4rem;
+  height: 2.4rem;
+  background: #EEE;
+  -webkit-clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+  clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+  transform: scale(0.6);
+  transform-origin: center;
+}
+.l-vendor .reviews-title {
+  color: #666;
+  padding-bottom: 0.8rem;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid #AAA;
+  font-size: 1.2rem;
+  font-weight: initial;
+}
+.l-vendor .reviews-list {
+  list-style: none;
+}
+.l-vendor .reviews-list .review-item {
+  position: relative;
+}
+.l-vendor .reviews-list .review-item:not(:last-of-type) {
+  margin-bottom: 2rem;
+}
+.l-vendor .reviews-list .review-item::after {
+  content: attr(data-date);
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  color: #666;
+  font-size: 1.2rem;
+}
+.l-vendor .reviews-list .review-author {
+  margin-bottom: 1rem;
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+.l-vendor .reviews-list .review-content {
+  font-size: 1.6rem;
+  font-style: italic;
+}
+.l-vendor .vendor-actions {
+  margin-bottom: 2.4rem;
+}
+.l-vendor .vendor-btn {
+  display: block;
+  width: 100%;
+  height: 3.6rem;
+  font-size: 1.6rem;
+  margin-bottom: 1rem;
+}

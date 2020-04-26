@@ -23,8 +23,14 @@
         position: relative;
         width: grid-colspan(3);
         padding-bottom: 2rem;
-        margin-top: 16.5rem;
-        margin-right: 3.6rem;
+        margin-right: $grid-gap;
+
+        tdt-searchbox {
+            display: block;
+            position: sticky;
+            top: $header-height + $grid-gap;
+            left: 0;
+        }
     }
 
     .results-section {
@@ -32,10 +38,11 @@
     }
 
     .title-area {
+        margin-left: grid-colspan(3) + $grid-gap;
         padding: 4.8rem 0;
     }
     .breadcrumb {
-        margin-bottom: .8rem;
+        margin-bottom: 1rem;
         color: #666;
         font-size: 1.8rem;
         font-weight: 600;
@@ -45,7 +52,7 @@
         .breadcrumb-link:not(:last-of-type)::after { content: "›"; margin-left: 1.5rem; }
     }
     .page-title {
-        font-size: 3.2rem;
+        font-size: 3.6rem;
         font-weight: 600;
         text-transform: uppercase;
     }

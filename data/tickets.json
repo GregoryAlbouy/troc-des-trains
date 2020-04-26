@@ -2,7 +2,7 @@
     {
         "id": 0,
         "vendorName": "Ophélie Martin",
-        "vendorPicture": "https://picsum.photos/200/300",
+        "vendorPicture": "https://picsum.photos/50/50",
         "price": "99.49",
         "conditions": "Tous publics",
         "steps": [
@@ -17,7 +17,7 @@
     {
         "id": 1,
         "vendorName": "Jacques Duchamp",
-        "vendorPicture": "https://picsum.photos/200/300",
+        "vendorPicture": "https://picsum.photos/50/50",
         "price": "99.50",
         "conditions": "Tous publics",
         "steps": [
@@ -32,7 +32,7 @@
     {
         "id": 2,
         "vendorName": "Jean Dupont",
-        "vendorPicture": "https://picsum.photos/200/300",
+        "vendorPicture": "https://picsum.photos/50/50",
         "price": "79.00",
         "conditions": "Carte Sénior",
         "steps": [
@@ -47,7 +47,7 @@
     {
         "id": 3,
         "vendorName": "Arnaud Fornelli",
-        "vendorPicture": "https://picsum.photos/200/300",
+        "vendorPicture": "https://picsum.photos/50/50",
         "price": "49.99",
         "conditions": "Carte Jeune",
         "steps": [
@@ -69,7 +69,7 @@
     {
         "id": 4,
         "vendorName": "Arnaud Fornelli",
-        "vendorPicture": "https://picsum.photos/200/300",
+        "vendorPicture": "https://picsum.photos/50/50",
         "price": "49.99",
         "conditions": "Carte Jeune",
         "steps": [
@@ -91,7 +91,7 @@
     {
         "id": 5,
         "vendorName": "Arnaud Fornelli",
-        "vendorPicture": "https://picsum.photos/200/300",
+        "vendorPicture": "https://picsum.photos/50/50",
         "price": "49.99",
         "conditions": "Carte Jeune",
         "steps": [
@@ -113,7 +113,7 @@
     {
         "id": 6,
         "vendorName": "Arnaud Fornelli",
-        "vendorPicture": "https://picsum.photos/200/300",
+        "vendorPicture": "https://picsum.photos/50/50",
         "price": "49.99",
         "conditions": "Carte Jeune",
         "steps": [
@@ -135,7 +135,7 @@
     {
         "id": 7,
         "vendorName": "Arnaud Fornelli",
-        "vendorPicture": "https://picsum.photos/200/300",
+        "vendorPicture": "https://picsum.photos/50/50",
         "price": "49.99",
         "conditions": "Carte Jeune",
         "steps": [
@@ -157,7 +157,7 @@
     {
         "id": 8,
         "vendorName": "Arnaud Fornelli",
-        "vendorPicture": "https://picsum.photos/200/300",
+        "vendorPicture": "https://picsum.photos/50/50",
         "price": "49.99",
         "conditions": "Carte Jeune",
         "steps": [

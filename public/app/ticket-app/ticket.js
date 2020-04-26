@@ -28,7 +28,6 @@ export class Ticket
             lastStep = ticketData.steps[connections]
         
         this.data.id = ticketData.id
-        // this.data.steps = ticketData.steps
         this.data.connections = connections
         this.data.connectionsDisplay = connections === 0 ? 'Direct' : `${connections} correspondance(s)`
         this.data.startDate = Utils.datetime(firstStep.startTime).toDate()
@@ -39,6 +38,7 @@ export class Ticket
         this.data.priceDisplay = `${ticketData.price}€` // use regex to convert NNNN to SS.SS€
         this.data.conditions = ticketData.conditions
         this.data.vendorName = ticketData.vendorName
+        this.data.vendorPicture = ticketData.vendorPicture
 
         this.data.steps = ticketData.steps.map((step, i, steps) => {
             return {

@@ -1,0 +1,56 @@
+:host {
+  position: fixed;
+  z-index: 20;
+  width: 40rem;
+  padding: 2rem;
+  background: #FFF;
+  box-shadow: 0 0 2rem 0 rgba(0, 0, 0, 0.15);
+  transform: translateX(100%);
+  transition: transform 0.2s;
+  top: 200px;
+  left: 200px;
+}
+
+:host-context([open]) {
+  transform: translateX(0);
+}
+
+.menu-title {
+  position: relative;
+  margin: 0 0 2rem;
+  font-size: 2rem;
+  font-weight: 700;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.cart-list {
+  position: relative;
+  top: 2rem;
+  max-height: 40rem;
+  overflow: scroll;
+}
+
+.order-section {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+  padding-top: 2rem;
+  font-size: 2.4rem;
+}
+
+.total {
+  font-weight: 700;
+  text-align: right;
+}
+
+tdt-cart-ticket {
+  margin-bottom: 2rem;
+}
+
+tdt-button {
+  display: block;
+  width: 100%;
+  height: 6rem;
+  font-size: 2rem;
+}

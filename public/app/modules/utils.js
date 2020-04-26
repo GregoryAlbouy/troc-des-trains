@@ -64,7 +64,7 @@ export class Utils
                 YYYY: datetime.getFullYear(),
                 MM: formatNumber(datetime.getMonth() + 1),
                 dd: formatNumber(datetime.getDate()),
-                hh: formatNumber(datetime.getUTCHours()),
+                hh: datetime.getUTCHours(),
                 mm: formatNumber(datetime.getMinutes())
             }
         }

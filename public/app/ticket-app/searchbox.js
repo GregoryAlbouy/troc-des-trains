@@ -1,4 +1,4 @@
-import { TdtSearchbox } from '../components/tdt-searchbox/tdt-searchbox.js'
+import { TdtSearchbox } from '../components/tdt-searchbox/tdt-searchbox.c.js'
 
 export class Searchbox
 {
