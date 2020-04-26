@@ -89,7 +89,7 @@
   font-size: 1.6rem;
 }
 
-:host-context([open]) .l-summary {
+:host-context(tdt-ticket[open]) .l-summary {
   border-bottom-left-radius: 0;
   transition: none;
 }
@@ -103,17 +103,17 @@
 .l-summary,
 .l-summary::after,
 .ticket-head:hover .l-price,
-:host-context([open]) .ticket-head:hover .l-price {
+:host-context(tdt-ticket[open]) .ticket-head:hover .l-price {
   background-color: #A0F0D0;
 }
 
 .l-price,
 .ticket-head:hover .l-summary,
 .ticket-head:hover .l-summary::after,
-:host-context([open]) .l-summary,
-:host-context([open]) .l-summary::after,
-:host-context([open]) .ticket-head:hover .l-summary,
-:host-context([open]) .ticket-head:hover .l-summary::after {
+:host-context(tdt-ticket[open]) .l-summary,
+:host-context(tdt-ticket[open]) .l-summary::after,
+:host-context(tdt-ticket[open]) .ticket-head:hover .l-summary,
+:host-context(tdt-ticket[open]) .ticket-head:hover .l-summary::after {
   background-color: #60F0C0;
 }
 
@@ -133,7 +133,7 @@
   text-align: center;
 }
 
-:host-context([open]) .l-price {
+:host-context(tdt-ticket[open]) .l-price {
   border-bottom-right-radius: 0;
   transition: none;
 }
@@ -150,6 +150,9 @@
   background: #A0F0D0;
   cursor: initial;
   color: #202060;
+}
+:host-context([in-cart]) .ticket-head:hover > * {
+  background: none;
 }
 :host-context([in-cart]) .l-summary {
   position: static;

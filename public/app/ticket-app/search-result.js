@@ -14,12 +14,12 @@ export class SearchResult
         const appendTicket = (ticket) => {
             const resultTicket = container.appendChild(new TdtTicket())
             resultTicket.init(ticket.data)
-            if (ticket.inCart) resultTicket.classList.add('added')
+            if (ticket.inCart) resultTicket.setAttribute('added', '')
         }
-        const dispatchLoadEvent = (ticket) => ticket.dispatchEvent(new TicketEvent('allloaded'))
+        // const dispatchLoadEvent = (ticket) => ticket.dispatchEvent(new TicketEvent('allloaded'))
 
         this.content.forEach(appendTicket)
-        container.childNodes.forEach(dispatchLoadEvent)
+        // container.childNodes.forEach(dispatchLoadEvent)
     }
 
     add(ticket)
@@ -36,6 +36,20 @@ export class SearchResult
 
     reactivateTicket(ticket)
     {
+        const match = this.content.find((match) => match === ticket)
 
+        if (!match) return
+
+        const container = document.querySelector('.ticket-list-container')
+
+        container.childNodes.forEach((ticketElt) => {
+            if (ticketElt.ticketId === ticket.data.id) ticketElt.removeAttribute('added')
+        })
+
+
+        // if not added return
+
+        
+        
     }
 }

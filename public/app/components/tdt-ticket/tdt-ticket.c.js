@@ -57,7 +57,6 @@ export class TdtTicket extends AutoloadingComponent
     close()
     {
         this.removeAttribute('open')
-        console.log(`${this.ticketId}: `, this.elt.body)
         return new TicketAnimation('closeAccordion', this.elt.body.root.querySelector('.ticket-body'), 300)
     }
 

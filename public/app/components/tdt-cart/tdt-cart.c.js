@@ -1,5 +1,6 @@
 import { AutoloadingComponent } from '../autoloading-component.js'
 import { TdtCartTicket } from '../tdt-cart-ticket/tdt-cart-ticket.c.js'
+import { TicketAnimation } from '../../ticket-app/ticket-animation.js'
 
 export class TdtCart extends AutoloadingComponent
 {
@@ -59,11 +60,20 @@ export class TdtCart extends AutoloadingComponent
 
         this.tickets = this.tickets.filter((match) => match !== ticket);
 
-        (async () => {
-            await new TicketAnimation('fadeout', cartTicketElt, 1000)
-            this.dom.ticketList.removeChild(cartTicketElt)
-            this.updateDisplay()
-        })()
+        // (async () => {
+        //     await new TicketAnimation('fadeout', cartTicketElt, 1000)
+        //     this.dom.ticketList.removeChild(cartTicketElt)
+        //     this.updateDisplay()
+        // })()
+
+        return new Promise((resolve) => {
+            new TicketAnimation('fadeout', cartTicketElt, 1000)
+                .then(() => {
+                    this.dom.ticketList.removeChild(cartTicketElt)
+                    this.updateDisplay()
+                    resolve()
+                })
+        })
     }
 }
 

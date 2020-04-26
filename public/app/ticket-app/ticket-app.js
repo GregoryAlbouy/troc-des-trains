@@ -71,6 +71,8 @@ export class TicketApp
 
         if (!ticket.inCart) return
         this.cart.remove(ticketElt, ticket)
+            .then(() => this.searchResult.reactivateTicket(ticket))
+        // this.searchResult.reactivateTicket(ticket)
     }
 
     renderSearchResult(ticketTable)

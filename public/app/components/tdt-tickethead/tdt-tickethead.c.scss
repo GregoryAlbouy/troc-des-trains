@@ -81,7 +81,7 @@
     // .step-station {  }
     .conditions { font-size: 1.6rem; }
 }
-:host-context([open]) .l-summary {
+:host-context(tdt-ticket[open]) .l-summary {
     border-bottom-left-radius: 0;
     transition: none;
 }
@@ -95,16 +95,16 @@
 .l-summary,
 .l-summary::after,
 .ticket-head:hover .l-price,
-:host-context([open]) .ticket-head:hover .l-price {
+:host-context(tdt-ticket[open]) .ticket-head:hover .l-price {
     background-color: s.$color1--light;
 }
 .l-price,
 .ticket-head:hover .l-summary,
 .ticket-head:hover .l-summary::after,
-:host-context([open]) .l-summary,
-:host-context([open]) .l-summary::after,
-:host-context([open]) .ticket-head:hover .l-summary,
-:host-context([open]) .ticket-head:hover .l-summary::after {
+:host-context(tdt-ticket[open]) .l-summary,
+:host-context(tdt-ticket[open]) .l-summary::after,
+:host-context(tdt-ticket[open]) .ticket-head:hover .l-summary,
+:host-context(tdt-ticket[open]) .ticket-head:hover .l-summary::after {
     background-color: s.$color1--dark;    
 }
 
@@ -124,7 +124,7 @@
         text-align: center;
     }
 }
-:host-context([open]) .l-price {
+:host-context(tdt-ticket[open]) .l-price {
     border-bottom-right-radius: 0;
     transition: none;
 }
@@ -145,9 +145,9 @@
         background: s.$color1--light;
         cursor: initial;
         color: s.$color2;
-
-        // & > * { border-radius: 0; }
     }
+
+    .ticket-head:hover > * { background: none; }
 
 
     .l-summary {
