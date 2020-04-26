@@ -10,7 +10,8 @@ See branch master for the working-but-poorly-written version.
 
 ## Further improvements
 
-- [ ] Code clean-up and modularization (*in progress*)
+- [x] Code clean-up and modularization
 - [ ] Actual search engine fetching a dummy database
 - [ ] Sort options
-- [ ] Use web components
+- [ ] Use web components (*in progress: 80%*)
+- [ ] Move to webpack (src/dist fully separated)
