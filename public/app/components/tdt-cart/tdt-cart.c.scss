@@ -2,8 +2,8 @@
 
 :host {
     position: fixed;
-    // top: s.$header-height;
-    // right: 0;
+    top: s.$header-height;
+    right: 0;
     z-index: 20;
     width: 40rem;
     padding: 2rem;
@@ -12,32 +12,20 @@
     transform: translateX(100%);
     transition: transform .2s;
 
-    top: 200px;
-    left: 200px;
+    // for tests
+    // top: 200px;
+    // left: 200px;
 }
 
 :host-context([open]) { transform: translateX(0); }
 
 .menu-title {
     position: relative;
-    // padding: 2rem 0;
     margin: 0 0 2rem;
     font-size: 2rem;
     font-weight: 700;
     text-align: center;
     text-transform: uppercase;
-
-    // &::after {
-    //     content: "";
-    //     display: block;
-    //     position: absolute;
-    //     top: 100%;
-    //     left: 0;
-    //     z-index: 1;
-    //     width: 100%;
-    //     height: 2rem;
-    //     background: linear-gradient(to bottom, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
-    // }
 }
 
 .cart-list {

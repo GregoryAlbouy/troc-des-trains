@@ -1,5 +1,7 @@
 :host {
   position: fixed;
+  top: 10rem;
+  right: 0;
   z-index: 20;
   width: 40rem;
   padding: 2rem;
@@ -7,8 +9,6 @@
   box-shadow: 0 0 2rem 0 rgba(0, 0, 0, 0.15);
   transform: translateX(100%);
   transition: transform 0.2s;
-  top: 200px;
-  left: 200px;
 }
 
 :host-context([open]) {
