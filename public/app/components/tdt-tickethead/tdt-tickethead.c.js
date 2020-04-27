@@ -18,7 +18,7 @@ export class TdtTickethead extends AutoloadingComponent
         endTime.textContent     = ticketData.endTime
         duration.textContent    = ticketData.totalDuration
         connections.textContent = ticketData.connectionsDisplay
-        conditions.textContent  = ticketData.conditions
+        conditions.textContent  = ticketData.conditionsDisplay
         price.textContent       = ticketData.priceDisplay
     }
 }

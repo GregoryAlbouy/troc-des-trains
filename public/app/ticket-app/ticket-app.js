@@ -1,7 +1,7 @@
 import { TdtCart } from '../components/tdt-cart/tdt-cart.c.js'
 import { Searchbox } from './searchbox.js'
 import { SearchResult } from './search-result.js'
-import { Ticket } from './ticket.js'
+// import { Ticket } from './ticket.js'
 // import { ticketDataList } from './ticket-data.js'
 // import { Utils } from '../modules/utils.js'
 import { TicketAnimation } from './ticket-animation.js'
@@ -18,7 +18,8 @@ export class TicketApp
     TICKET_DATA_URL = 'http://localhost/trocdestrains/data/tickets.json'
     cart = new TdtCart()
     searchbox = new Searchbox()
-    searchResult = new SearchResult()
+    searchResult = null
+    // searchResult = new SearchResult()
     
     constructor()
     {
@@ -38,12 +39,28 @@ export class TicketApp
     {
         // TODO: make it a selected data from user search request
         const ticketTable = await this.getTicketTable()
-        this.renderSearchResult(ticketTable)
+        this.searchResult = this.renderSearchResult(ticketTable)
     }
 
-    async getTicketTable()
+    async getTicketTable(filters = [])
     {
-        return (await fetch(this.TICKET_DATA_URL)).json()
+        const ticketTable = await (await fetch(this.TICKET_DATA_URL)).json()
+
+        if (!filters.length) return ticketTable
+
+        // const filterResult = ticketTable.filter((ticket) => {
+        //     const reduceResult = filters.reduce((a, b) => (ticket.conditions === a || ticket.conditions === b), false)
+        //     console.log('REDUCE RESULR: ', reduceResult)
+        //     return reduceResult
+        // })
+
+        const filterResult = ticketTable.filter((ticket) => {
+            const reduceResult = filters.some((condition) => ticket.conditions === condition)
+            return reduceResult
+        })
+        
+        // console.log('RESULT: ', filterResult)
+        return filterResult
     }
 
     addToCart(event)
@@ -77,10 +94,11 @@ export class TicketApp
 
     renderSearchResult(ticketTable)
     {
-        ticketTable.forEach((ticketData) => {
-            this.searchResult.add(new Ticket(ticketData))
-        })
-        this.searchResult.render()
+        return new SearchResult(ticketTable)
+        // ticketTable.forEach((ticketData) => {
+        //     this.searchResult.add(new Ticket(ticketData))
+        // })
+        // this.searchResult.render()
     }
 
     /**

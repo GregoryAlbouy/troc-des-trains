@@ -6,19 +6,22 @@
   overflow: hidden;
   background: transparent;
   width: 100%;
-  transition: transform 0.2s;
+  box-shadow: 0 0.8rem 1.2rem -0.8rem rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .ticket:hover,
-:host-context([open]) .ticket {
-  transform: translate(2%);
+:host-context(tdt-ticket[open]) .ticket {
+  transform: translateY(0.4rem);
+  transform-origin: top center;
+  box-shadow: none;
 }
 
-:host-context([added]) .ticket {
+:host-context(tdt-ticket[added]) .ticket {
   transform: none;
 }
 
-:host-context([added]) .ticket::before {
+:host-context(tdt-ticket[added]) .ticket::before {
   content: "AJOUTÉ";
   display: flex;
   justify-content: center;

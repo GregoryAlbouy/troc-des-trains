@@ -59,12 +59,7 @@ export class TdtCart extends AutoloadingComponent
         if (!this.tickets.find(match => match === ticket)) return
 
         this.tickets = this.tickets.filter((match) => match !== ticket);
-
-        // (async () => {
-        //     await new TicketAnimation('fadeout', cartTicketElt, 1000)
-        //     this.dom.ticketList.removeChild(cartTicketElt)
-        //     this.updateDisplay()
-        // })()
+        ticket.inCart = false
 
         return new Promise((resolve) => {
             new TicketAnimation('fadeout', cartTicketElt, 1000)
@@ -74,6 +69,11 @@ export class TdtCart extends AutoloadingComponent
                     resolve()
                 })
         })
+    }
+
+    containsTicket(ticket)
+    {
+        return this.tickets.map((cartTicket) => cartTicket.data.id).includes(ticket.data.id)
     }
 }
 

@@ -28,9 +28,7 @@ export class TdtTicket extends AutoloadingComponent
         }
 
         const setListeners = () => {
-            const
-                addBtn = this.elt.body.root.querySelector('.js-add-btn'),
-                removeBtn = this.elt.head.root.querySelector('.js-remove-btn')
+            const addBtn = this.elt.body.root.querySelector('.js-add-btn')
 
             if (!!addBtn) addBtn.onclick = () => window.dispatchEvent(new TicketEvent('clickadd', {
                 detail: { id: this.ticketId, elt: this }
@@ -40,7 +38,6 @@ export class TdtTicket extends AutoloadingComponent
         this.ticketId = ticketData.id
         this.elt.head = this.root.querySelector('tdt-tickethead')
         this.elt.body = this.root.querySelector('tdt-ticketbody')
-
         this.elt.head.init(ticketData)
         this.elt.body.init(ticketData)
         

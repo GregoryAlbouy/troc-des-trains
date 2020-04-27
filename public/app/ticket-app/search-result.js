@@ -1,6 +1,6 @@
-import { TicketEvent } from './ticket-event.js';
+import { Ticket } from './ticket.js'
+// import { TicketEvent } from './ticket-event.js';
 import { TdtTicket } from '../components/tdt-ticket/tdt-ticket.c.js';
-// import { debugTicket } from '../app.js'
 
 export class SearchResult
 {
@@ -8,9 +8,20 @@ export class SearchResult
         // debugTicket
     ]
 
+    constructor(ticketTable)
+    {
+        ticketTable.forEach((ticketData) => {
+            this.add(new Ticket(ticketData))
+        })
+        this.render()
+    }
+
     render()
     {
         const container = document.querySelector('.ticket-list-container')
+
+        while (container.lastElementChild) container.removeChild(container.lastElementChild)
+
         const appendTicket = (ticket) => {
             const resultTicket = container.appendChild(new TdtTicket())
             resultTicket.init(ticket.data)
