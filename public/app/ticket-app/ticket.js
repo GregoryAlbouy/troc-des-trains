@@ -32,7 +32,9 @@ export class Ticket
         this.data.id = ticketData.id
         this.data.connections = connections
         this.data.connectionsDisplay = connections === 0 ? 'Direct' : `${connections} correspondance(s)`
-        this.data.startDate = Utils.datetime(firstStep.startTime).toDate()
+        this.data.startStation = firstStep.startStation
+        this.data.endStation = lastStep.endStation
+        this.data.startDate = ticketData.dummyDate || Utils.datetime(firstStep.startTime).toDate()
         this.data.startTime = Utils.datetime(firstStep.startTime).toTime()
         this.data.endTime = Utils.datetime(lastStep.endTime).toTime()
         this.data.totalDuration = Utils.datetime(lastStep.endTime, firstStep.startTime).toDuration()

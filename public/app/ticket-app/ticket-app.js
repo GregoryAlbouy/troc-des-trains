@@ -1,5 +1,6 @@
 import { TdtCart } from '../components/tdt-cart/tdt-cart.c.js'
-import { Searchbox } from './searchbox.js'
+import { TdtSearchbox } from '../components/tdt-searchbox/tdt-searchbox.c.js'
+// import { Searchbox } from './searchbox.js'
 import { SearchResult } from './search-result.js'
 // import { Ticket } from './ticket.js'
 // import { ticketDataList } from './ticket-data.js'
@@ -15,15 +16,16 @@ import { TicketEvent } from './ticket-event.js'
  */
 export class TicketApp
 {
-    TICKET_DATA_URL = 'http://localhost/trocdestrains/data/tickets.json'
-    cart = new TdtCart()
-    searchbox = new Searchbox()
-    searchResult = null
-    // searchResult = new SearchResult()
+    TICKET_DATA_URL = '../data/tickets.json'
+    cart
+    searchbox
+    searchResult
     
     constructor()
     {
-        document.body.appendChild(this.cart)
+        this.cart = document.body.appendChild(new TdtCart())
+        this.searchbox = document.querySelector('.search-section').appendChild(new TdtSearchbox)
+
         window.addEventListener('clickadd', this.addToCart.bind(this))
         window.addEventListener('clickremove', this.removeFromCart.bind(this))
 
