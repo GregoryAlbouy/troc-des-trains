@@ -19,6 +19,7 @@
 
 :host-context(tdt-ticket[added]) .ticket {
   transform: none;
+  box-shadow: none;
 }
 
 :host-context(tdt-ticket[added]) .ticket::before {
