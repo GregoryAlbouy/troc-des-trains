@@ -53,17 +53,9 @@ export class TicketAnimation
         const distance = window.innerWidth - element.offsetLeft
 
         element.style.transition = `transform ${this.duration}ms, opacity ${this.duration}ms`
-        element.style.transform = `translate(${distance})px`
+        element.style.transform = `translate(${distance}px)`
         element.style.opacity = '0'
-        setTimeout(() => element.style.transition = null)
-
-        // element.animate([
-        //     { transform: 'translate(0px)', opacity: 1 },
-        //     { transform: `translate(${distance}px)`, opacity: 0 }
-        // ], {
-        //     duration: this.duration,
-        //     fill: 'forwards'
-        // })
+        setTimeout(() => element.style.transition = null, this.duration)
     }
 
     async addTicket(element)
