@@ -1,0 +1,168 @@
+@import 'settings';
+@import 'animations';
+
+/************************************************
+***************** MEDIA QUERIES *****************
+************************************************/
+
+/* Responsive */
+@media (max-width: 1600px) {
+    html { font-size: 7px; }
+}
+
+@media (max-width: 1360px) {
+    html { font-size: 7px; }
+}
+
+@media (max-width: 1200px) {
+    html {
+        --fixed-width: 1px;
+        font-size: 7px;
+    }
+}
+
+@media (max-width: 1080px) {
+    html {
+        font-size: 6px;
+    }
+}
+
+/* Tablet version: greater font-size and moved search-box */
+@media (min-width: 640px) and (max-width: 910px) {
+    html { font-size: 6px; }
+
+    /* Footer */
+
+    .main-footer {
+        .footer-container { width: initial; }
+    }
+
+    /* Results */
+    .page-results {
+
+        .main { width: 100% }
+
+        .sections-container {
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+        }
+    
+        .search-section { 
+            width: 100%;
+            margin: 0 0 4rem 0;
+
+            // .searchbox-title:nth-of-type(2) { text-align: left; }
+    
+        }
+    
+        .results-section {
+            padding: 0;
+        }
+        // .ticket-list-container { margin: auto; }
+    }
+}
+
+/* Mobile version */
+@media (max-width: 640px) {
+    html {
+        --fixed-width: 2px;
+        font-size: 10px;
+    }
+
+    /* General */
+    .desktop-only {
+        display: none !important;
+    }
+
+    /* Header */
+    .main-header {
+        padding: 0 3.6rem;
+
+        .main-header__logo {
+            left: 11rem;
+            width: initial;
+        }
+        .main-title { font-size: 2.4rem; }
+        .slogan { font-size: 1rem; }
+        .header-btn {
+            font-size: 0 !important;
+
+            &:not(.header-btn--burger) { padding-left: 2.2rem; }
+        }
+        
+    }
+
+    /* Footer */
+    .main-footer {
+        padding-bottom: 0;
+
+        .footer-container {
+            flex-direction: column;
+            justify-content: flex-start;
+            width: 100%;
+            padding: 0 4rem;
+
+        }
+
+        .footer-section {
+            width: 100%;
+            padding-bottom: 4rem;
+            padding-left: 0;
+            margin-bottom: 4rem;
+
+            &:not(:last-of-type) {
+                border-right: 0;
+                border-bottom: 1px solid #FFF;
+            }
+        }
+    }
+
+    /* Results page */
+    .page-results {
+
+        .main {
+            width: 100%;
+            padding-bottom: 0;
+        }
+
+        .breadcrumb { display: none; }
+
+        .title-area { padding: 0; margin: 2.4rem 0; }
+        .page-title {
+            margin: 0;
+            font-size: 2.4rem;
+            text-align: center;
+        }
+
+        .sections-container { display: initial; }
+
+        .search-section {
+            width: 100%;
+            margin: 0;
+        }
+
+        .results-section {
+            width: 100%;
+
+            // .ticket-list-container { padding: 0 0rem; }
+
+            .end-results {
+                padding: 0 2rem;
+
+                p { font-size: 1.4rem; }
+            }
+        }
+    }
+}
+
+@media (max-width: 380px) {
+    html { font-size: 9px; }
+}
+
+/* Mobile-only */
+@media (min-width: 640px) {
+    .mobile-only {
+        display: none !important;
+    }
+}

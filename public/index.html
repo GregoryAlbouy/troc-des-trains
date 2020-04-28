@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Résultat de la recherche | Troc des trains</title>
+
+    <!-- Style -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,600,700&display=swap" rel="stylesheet">
+
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="./images/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./images/favicon/favicon-16x16.png">
+    <link rel="manifest" href="./images/favicon/site.webmanifest">
+    <link rel="mask-icon" href="./images/favicon/safari-pinned-tab.svg" color="#33ee99">
+    <link rel="shortcut icon" href="./images/favicon/favicon.ico">
+    <meta name="msapplication-TileColor" content="#00a300">
+    <meta name="msapplication-config" content="./images/favicon/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+</head>
+<body class="page-results">
+    
+    <header class="main-header">
+
+        <div class="main-header__logo">
+            
+            <h2 class="main-title">
+                <a href="/">
+                    <span class="desktop-only">Troc des Trains</span>
+                    <span class="mobile-only">TdT</span>
+                </a>
+            </h2>
+            <p class="slogan desktop-only"><a href="/">Numéro UN sur les billets d'occasion</a></p>
+
+        </div>
+        <nav class="main-header__nav">
+
+            <ul class="main-header__general">
+                <li class="header-item mobile-only">
+                    <button class="header-btn header-btn--burger">
+                        <span class="line"></span>
+                    </button>
+                </li>
+                <li class="header-item desktop-only">
+                    <button class="header-btn header-btn--lang">Français</button>
+                </li>
+                <li class="header-item desktop-only">
+                    <button class="header-btn header-btn--accessibility">Accessibilité</button>
+                </li>
+            </ul>        
+
+            <ul class="main-header__user">
+                <li class="header-item">
+                    <button class="header-btn header-btn--account" data-value="2">Mon compte</button>
+                </li>
+                <li class="header-item">
+                    <button class="header-btn header-btn--cart" data-value="0">Mon panier</button>
+                </li>
+            </ul>
+
+
+        </nav>
+
+    </header>
+
+    <main class="main">
+
+        <div class="title-area">
+            <p class="breadcrumb">
+                <a href="/" class="breadcrumb-link">Accueil</a>
+                <a href="results.html" class="breadcrumb-link">Recherche</a>
+            </p>
+            <h1 class="page-title">Résultats<span class="desktop-only"> de la recherche</span></h1>
+        </div>
+        
+        <div class="sections-container">
+
+            <section class="search-section" role="search"></section>
+            
+            <section class="results-section">
+
+
+                <div class="ticket-list-container"></div>
+                
+                <div class="end-results">
+                    <p>Plus de billets disponibles à cette date :(</p>
+                    <p>Consultez le <a href="">calendrier des prix</a> ou lancez une nouvelle recherche.</p>
+                </div>
+
+            </section>
+
+        </div>
+
+    </main>
+
+    <footer class="main-footer">
+        <div class="footer-container">
+            <section class="footer-section">
+                <h2 class="footer-title">Informations</h2>
+                <ul class="footer-list">
+                    <li class="footer-item"><a href="" class="footer-link">Nos engagements</a></li>
+                    <li class="footer-item"><a href="" class="footer-link">Garantie fiabilité</a></li>
+                    <li class="footer-item"><a href="" class="footer-link">Politique de confidentialité</a></li>
+                    <li class="footer-item"><a href="" class="footer-link">CGV</a></li>
+                    <li class="footer-item"><a href="" class="footer-link">Mentions légales</a></li>
+                </ul>
+            </section>
+            <section class="footer-section">
+                <h2 class="footer-title">Contact</h2>
+                <ul class="footer-list">
+                    <li class="footer-item"><a href="" class="footer-link">contact@trocdestrains.fr</a></li>
+                    <li class="footer-item"><a href="" class="footer-link">01 23 45 67 89</a></li>
+                </ul>
+            </section>
+            <section class="footer-section">
+                <h2 class="footer-title">Nous suivre</h2>
+                <ul class="footer-list">
+                    <li class="footer-item"><a href="" class="footer-link">Réseaux</a></li>
+                    <li class="footer-item"><a href="" class="footer-link">S'inscrire à la newsletter</a></li>
+                </ul>
+            </section>
+        </div>
+    </footer>
+
+    <!-- <script src="./script/ticketData.js"></script> -->
+    <script type ="module" src="./app/app.js"></script>
+</body>
+</html>

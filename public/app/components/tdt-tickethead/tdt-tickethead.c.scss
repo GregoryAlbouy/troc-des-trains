@@ -1,0 +1,277 @@
+@use '../../../../src/scss/settings' as s;
+
+*,
+*::before,
+*::after {
+    padding: 0;
+    margin: 0;
+    border: none;
+    outline: none;
+    box-sizing: border-box;
+}
+
+/* Close button */
+
+.js-remove-btn {
+    display: none;
+}
+
+/* Ticket head (visible part) */
+
+.ticket-head {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    z-index: 1; /* remains above absolute positionnings in the ticket-body */
+    height: 14rem;
+    box-shadow: 0 0 1rem rgba(0, 0, 0, .2);
+    cursor: pointer;
+}
+
+.l-summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex: 1 0 auto;
+    position: relative;
+    height: 100%;
+    padding: 0 2rem 0 3rem;
+    border-top-left-radius: 1rem;
+    border-bottom-left-radius: 1rem;
+    user-select: none;
+    transition:
+        background .2s,
+        border-bottom-left-radius 0s .4s;
+
+    &::after {
+        content: "•";
+        display: block;
+        position: absolute;
+        top: calc(50% - 2rem);
+        right: -2rem;
+        z-index: 1;
+        width: 4rem;
+        height: 4rem;
+        padding-right: .2rem;
+        margin-top: .1rem;
+        margin-left: .2rem;
+        border-radius: 50%;
+        color: #333;
+        font-size: 6rem;
+        line-height: 3.2rem;
+        text-align: center;
+        transition: background .2s;
+    }
+    .journey-date { display: none; }
+
+    .journey-step { font-size: 0; margin-bottom: .5rem; }
+    .journey-summary { 
+        font-size: 0; 
+        margin-top: 1rem;
+    }
+    .step-time, .step-station { font-size: 2.4rem; }
+    .journey-duration, .journey-connections { color: s.$darkgrey; font-size: 1.6rem; }
+    .step-time, .journey-duration {
+        display: inline-block;
+        width: 6.8rem;
+        margin-right: 1.8rem;
+        text-align: right;
+    }
+    .step-time { font-weight: 700; }
+    // .step-station {  }
+    .conditions { font-size: 1.6rem; }
+}
+
+:host([open]) .l-summary {
+    border-bottom-left-radius: 0;
+    transition: none;
+}
+
+.ticket.in-cart .ticket-head .journey-date {
+    display: block;
+    position: absolute;
+}
+
+/* Background-color management */
+.l-summary,
+.l-summary::after,
+.ticket-head:hover .l-price,
+:host([open]) .ticket-head:hover .l-price {
+    background-color: s.$color1--light;
+}
+.l-price,
+.ticket-head:hover .l-summary,
+.ticket-head:hover .l-summary::after,
+:host([open]) .l-summary,
+:host([open]) .l-summary::after,
+:host([open]) .ticket-head:hover .l-summary,
+:host([open]) .ticket-head:hover .l-summary::after {
+    background-color: s.$color1--dark;    
+}
+
+.l-price {
+    position: relative;
+    width: 20%;
+    height: 100%;
+    border-top-right-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+    background: s.$color1--dark;
+    transition: background .2s, border-bottom-right-radius 0s .2s;
+
+    .price {
+        font-size: 3.2rem;
+        font-weight: 700;
+        line-height: 14rem;
+        text-align: center;
+    }
+}
+:host([open]) .l-price {
+    border-bottom-right-radius: 0;
+    transition: none;
+}
+
+@media (max-width: 640px) {
+    .ticket-head > *,
+    .ticket-head:hover > *,
+    :host[open] .ticket-head > * {
+        background: none !important;
+    }
+
+    .ticket-head {
+        position: relative;
+        height: 9rem;
+        padding: 0 2rem;
+        background: s.$color1--dark;
+        color: s.$color2;
+
+        & > * { border-radius: 0; }
+    }
+
+    .l-summary {
+        position: static;
+        padding: 0;
+        background: none;
+
+        &::after { display: none; }
+
+        .step-time, .step-station { font-size: 1.6rem; }
+        .journey-duration, .journey-connections { font-size: 1.2rem; }
+        .step-time, .journey-duration { width: 4rem; }
+        .journey-summary { margin-top: 0; }
+        .conditions {
+            position: absolute;
+            right: 2rem;
+            top: 1.8rem;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+    }
+
+    .l-price {
+        position: static;
+        background: none;
+
+        .price {
+            position: absolute;
+            right: 2rem;
+            bottom: 1.6rem;
+            font-size: 2rem;
+            line-height: initial;
+        }
+    }
+}
+
+
+/************************************************
+******************** IN-CART ********************
+************************************************/
+
+:host([in-cart]) {
+
+    .ticket-head {
+        position: relative;
+        height: 13rem;
+        padding: 0 2rem;
+        border-radius: 1rem;
+        box-shadow: 0 0 1rem rgba(0, 0, 0, .2);
+        background: s.$color1--light;
+        cursor: initial;
+        color: s.$color2;
+    }
+
+    .ticket-head:hover > * { background: none; }
+
+
+    .l-summary {
+        position: static;
+        padding: 0;
+        background: none;
+
+        &::after { display: none; }
+
+        .journey-date {
+            display: block;
+            position: absolute;
+            top: 1.6rem;
+            left: 50%;
+            font-size: 1.6rem;
+            transform: translateX(-50%);
+        }
+        .journey-info { margin-top: 2rem; }
+        .step-time, .step-station { font-size: 1.6rem; }
+        .journey-duration, .journey-connections { font-size: 1.2rem; }
+        .step-time, .journey-duration { width: 4rem; }
+        .journey-summary { margin-top: 0; }
+        .conditions {
+            position: absolute;
+            right: 2rem;
+            bottom: 4rem;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+    }
+
+    .l-price {
+        position: static;
+        background: none;
+
+        .price {
+            position: absolute;
+            right: 2rem;
+            bottom: 1.6rem;
+            font-size: 2rem;
+            line-height: initial;
+        }
+    }
+
+    .js-remove-btn {
+        display: block;
+        position: absolute;
+        z-index: 1000;
+        top: 2rem;
+        right: 2rem;
+        width: 3rem;
+        height: 3rem;
+        background: none;
+        cursor: pointer;
+    
+        & .line {
+            display: block;
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 2px;
+            background: s.$color2;
+            transform: rotate(45deg);
+            transform-origin: bottom left;
+    
+            &::after {
+                @extend .line;
+                content: "";
+                transform: rotate(90deg);
+                transform-origin: center;
+            }
+        }
+    }
+}

@@ -1,0 +1,73 @@
+:host {
+  position: fixed;
+  top: 10rem;
+  right: 0;
+  z-index: 20;
+  width: 40rem;
+  padding: 2rem 0;
+  background: #FFF;
+  box-shadow: 0 0 2rem 0 rgba(0, 0, 0, 0.15);
+  transform: translateX(100%);
+  transition: transform 0.2s;
+}
+
+:host([open]) {
+  transform: translateX(0);
+}
+
+@media (min-width: 641px) and (max-width: 910px) {
+  :host {
+    width: 50%;
+  }
+}
+@media (max-width: 640px) {
+  :host {
+    width: 100%;
+  }
+}
+.menu-title {
+  position: relative;
+  margin: 2rem 0 0;
+  font-size: 2rem;
+  font-weight: 700;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.cart-list {
+  position: relative;
+  top: 2rem;
+  max-height: 40rem;
+  overflow: scroll;
+  overflow-y: auto;
+  padding: 2rem;
+  margin-bottom: 2rem;
+}
+
+.order-section {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 2rem;
+  font-size: 2.4rem;
+}
+
+.total {
+  font-weight: 700;
+  text-align: right;
+}
+
+tdt-cart-ticket {
+  display: block;
+}
+tdt-cart-ticket:not(:last-of-type) {
+  margin-bottom: 2rem;
+}
+
+tdt-button {
+  display: block;
+  width: calc(100% - 4rem);
+  height: 6rem;
+  font-size: 2rem;
+  margin: 0 2rem;
+}
