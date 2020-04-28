@@ -83,7 +83,26 @@ input:checked {
   border-radius: 50%;
 }
 
-@media (max-width: 640px) {
+@media (min-width: 641px) and (max-width: 910px) {
+  :host {
+    position: static;
+    padding: 4rem 8rem;
+    border-bottom: 2px solid #202060;
+  }
+  :host .btn--search {
+    margin-bottom: 2rem;
+  }
+  :host .searchbox-toggle-btn {
+    position: absolute;
+    bottom: calc(0 - 5rem);
+    left: calc(50% - 5rem);
+    width: 10rem;
+    height: 10rem;
+    cursor: pointer;
+    background: url("./images/searchbox-btn.svg") center/contain no-repeat;
+  }
+}
+@media (max-width: 640) {
   :host {
     position: static;
   }

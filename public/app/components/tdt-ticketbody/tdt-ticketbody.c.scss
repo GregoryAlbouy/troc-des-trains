@@ -11,7 +11,7 @@
 
 .ticket-body {
     width: 100%;
-    height: auto;
+    // height: auto;
     display: flex;
     justify-content: space-between;
     background: #EEE;
@@ -189,7 +189,7 @@ ol { list-style: none; }
 
         .conditions-content {
             line-height: 1.8rem;
-            transform: translateY(-10rem);
+            transform: translateY(-11rem);
             transition: transform .2s;
 
         }
@@ -382,5 +382,55 @@ ol { list-style: none; }
 
         
         // &:not(:last-of-type) { margin-bottom: 1rem; }
+    }
+}
+
+@media (max-width: 640px) {
+    .ticket-body {
+        justify-content: flex-start;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .l-journey {
+        width: 100%;
+        padding: 2rem;
+
+        &::before { display: none; }
+
+        .journey-title { display: none; }
+
+        .journey-conditions {
+            // align-self: center;
+            float: none;
+            margin: 0 auto 2rem auto;
+
+            .conditions-title { font-size: 1.4rem; }
+            .conditions-content { font-size: 1.4rem; }
+        }
+
+        .journey-add {
+            position: initial;
+            right: initial;
+            bottom: initial;
+            left: initial;
+            height: initial;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+
+            .price { margin-bottom: 2rem; }
+
+            tdt-button { height: 5rem; }
+        }
+    }
+
+    .l-vendor {
+        width: 100%;
+        padding-bottom: 0;
+
+        &::after { display: none; }
+
+        .vendor-title { text-align: left; }
     }
 }

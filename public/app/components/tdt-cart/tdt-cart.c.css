@@ -15,6 +15,16 @@
   transform: translateX(0);
 }
 
+@media (min-width: 641px) and (max-width: 910px) {
+  :host {
+    width: 50%;
+  }
+}
+@media (max-width: 640px) {
+  :host {
+    width: 100%;
+  }
+}
 .menu-title {
   position: relative;
   margin: 2rem 0 0;

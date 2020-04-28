@@ -8,7 +8,6 @@
 
 .ticket-body {
   width: 100%;
-  height: auto;
   display: flex;
   justify-content: space-between;
   background: #EEE;
@@ -176,7 +175,7 @@ ol {
 }
 .l-journey .journey-conditions .conditions-content {
   line-height: 1.8rem;
-  transform: translateY(-10rem);
+  transform: translateY(-11rem);
   transition: transform 0.2s;
 }
 .l-journey .journey-conditions .conditions-detail[open] .conditions-content {
@@ -344,4 +343,60 @@ ol {
   height: 3.6rem;
   font-size: 1.6rem;
   margin-bottom: 1rem;
+}
+
+@media (max-width: 640px) {
+  .ticket-body {
+    justify-content: flex-start;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .l-journey {
+    width: 100%;
+    padding: 2rem;
+  }
+  .l-journey::before {
+    display: none;
+  }
+  .l-journey .journey-title {
+    display: none;
+  }
+  .l-journey .journey-conditions {
+    float: none;
+    margin: 0 auto 2rem auto;
+  }
+  .l-journey .journey-conditions .conditions-title {
+    font-size: 1.4rem;
+  }
+  .l-journey .journey-conditions .conditions-content {
+    font-size: 1.4rem;
+  }
+  .l-journey .journey-add {
+    position: initial;
+    right: initial;
+    bottom: initial;
+    left: initial;
+    height: initial;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+  }
+  .l-journey .journey-add .price {
+    margin-bottom: 2rem;
+  }
+  .l-journey .journey-add tdt-button {
+    height: 5rem;
+  }
+
+  .l-vendor {
+    width: 100%;
+    padding-bottom: 0;
+  }
+  .l-vendor::after {
+    display: none;
+  }
+  .l-vendor .vendor-title {
+    text-align: left;
+  }
 }

@@ -31,13 +31,6 @@
 @media (min-width: 640px) and (max-width: 910px) {
     html { font-size: 6px; }
 
-    /* Ticket */
-    // .ticket { width: 100%; }
-
-    /* Cart */
-
-    .menu--cart { width: 50%; }
-
     /* Footer */
 
     .main-footer {
@@ -48,23 +41,6 @@
     .page-results {
 
         .main { width: 100% }
-    
-        // .searchbox {
-        //     position: static;
-        //     padding: 4rem 8rem;
-        //     border-bottom: 2px solid $color2;
-
-        //     .btn--search { margin-bottom: 2rem; }
-        //     .searchbox-toggle-btn {
-        //         position: absolute;
-        //         bottom: calc(0 - 5rem);
-        //         left: calc(50% - 5rem);
-        //         width: 10rem;
-        //         height: 10rem;
-        //         cursor: pointer;
-        //         background: url('../img/searchbox-btn.svg') center / contain no-repeat;
-        //     }
-        // }
 
         .sections-container {
             flex-direction: column;
@@ -79,7 +55,6 @@
             // .searchbox-title:nth-of-type(2) { text-align: left; }
     
         }
-
     
         .results-section {
             padding: 0;
@@ -99,9 +74,6 @@
     .desktop-only {
         display: none !important;
     }
-
-    /* Cart-menu */
-    .menu--cart { width: 100%; }
 
     /* Header */
     .main-header {
@@ -145,114 +117,6 @@
             }
         }
     }
-
-    /* Searchbox */
-    // .searchbox { position: static; }
-
-
-    /* Ticket */
-    // .ticket {
-    //     width: 100%;
-    //     border-radius: 0;
-    //     box-shadow: 0 .2rem .8rem rgba(0, 0, 0, .2);
-
-    //     &:hover .ticket-head > *,
-    //     &.open .ticket-head > *,
-    //     &.open .ticket-head:hover > * {
-    //         background: none !important;
-    //     }
-    //     &.open .ticket-head { background: $color1--dark; }
-    //     &.open .ticket-body {
-    //         border-bottom: 2px solid $color2;
-    //         transition: height .4s, border-bottom .2s .2s;
-    //     }
-
-    //     .ticket-head {
-    //         position: relative;
-    //         height: 9rem;
-    //         padding: 0 2rem;
-    //         background: $color1--light;
-    //         color: $color2;
-
-    //         & > * { border-radius: 0; }
-    //     }
-
-    //     .ticket-head__summary {
-    //         position: static;
-    //         padding: 0;
-    //         background: none;
-
-    //         &::after { display: none; }
-
-    //         .step-time, .step-station { font-size: 1.6rem; }
-    //         .journey-duration, .journey-connections { font-size: 1.2rem; }
-    //         .step-time, .journey-duration { width: 4rem; }
-    //         .journey-summary { margin-top: 0; }
-    //         .conditions {
-    //             position: absolute;
-    //             right: 2rem;
-    //             top: 1.8rem;
-    //             font-size: 1rem;
-    //             font-weight: 600;
-    //         }
-    //     }
-
-    //     .ticket-head__price {
-    //         position: static;
-    //         background: none;
-
-    //         .price {
-    //             position: absolute;
-    //             right: 2rem;
-    //             bottom: 1.6rem;
-    //             font-size: 2rem;
-    //             line-height: initial;
-    //         }
-    //     }
-
-    //     .ticket-body {
-    //         justify-content: flex-start;
-    //         flex-direction: column;
-    //         width: 100%;
-    //     }
-
-    //     .ticket-body__journey {
-    //         width: 100%;
-    //         padding: 2rem;
-
-    //         &::before { display: none; }
-
-    //         .journey-title { display: none; }
-    //         .journey-conditions {
-    //             // align-self: center;
-    //             float: none;
-    //             margin: 0 auto 2rem auto;
-
-    //             .conditions-title { font-size: 1.4rem; }
-    //             .conditions-content { font-size: 1.4rem; }
-    //         }
-
-    //         .journey-add {
-    //             flex-direction: column;
-    //             justify-content: flex-start;
-    //             align-items: center;
-
-    //             .price { margin-bottom: 2rem; }
-    //         }
-    //     }
-
-    //     .ticket-body__vendor {
-    //         width: 100%;
-    //         padding-bottom: 0;
-
-    //         &::after { display: none; }
-
-    //         .vendor-title { text-align: left; }
-    //     }
-    // }
-    // .ticket.in-cart {
-    //     .conditions { top: initial; }
-    // }
 
     /* Results page */
     .page-results {

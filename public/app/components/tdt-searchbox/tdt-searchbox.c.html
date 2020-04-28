@@ -1,27 +1,22 @@
-<!-- <div class="container"> -->
-    <!-- <div class="searchbox-content open"> -->
+<form>
+    <h3>Ma recherche</h3>
+    <fieldset class="search">
+        <label for="from">Départ</label>
+        <input type="text" name="from" id="from" placeholder="Paris gare de Lyon">
+        <label for="to">Destination</label>
+        <input type="text" name="to" id="to" placeholder="Montpellier St-Roch">
+        <label for="date">Date</label>
+        <input type="text" name="date" id="date" placeholder="26/01/2020">
+    </fieldset>
+    <h3 class="searchbox-title">Filtrer</h3>
+    <fieldset class="filter">
+        <legend>Conditions</legend>
+        <label><input type="checkbox" name="cond-0" value="0">Sans conditions</label>
+        <label><input type="checkbox" name="cond-1" value="1">Carte Jeune (12 - 27 ans)</label>
+        <label><input type="checkbox" name="cond-2" value="2">Carte Sénior (+60 ans)</label>
+    </fieldset>
 
-        <form>
-            <h3>Ma recherche</h3>
-            <fieldset class="search">
-                <label for="from">Départ</label>
-                <input type="text" name="from" id="from" placeholder="Paris gare de Lyon">
-                <label for="to">Destination</label>
-                <input type="text" name="to" id="to" placeholder="Montpellier St-Roch">
-                <label for="date">Date</label>
-                <input type="text" name="date" id="date" placeholder="26/01/2020">
-            </fieldset>
-            <h3 class="searchbox-title">Filtrer</h3>
-            <fieldset class="filter">
-                <legend>Conditions</legend>
-                <label><input type="checkbox" name="cond-0" value="0">Sans conditions</label>
-                <label><input type="checkbox" name="cond-1" value="1">Carte Jeune (12 - 27 ans)</label>
-                <label><input type="checkbox" name="cond-2" value="2">Carte Sénior (+60 ans)</label>
-            </fieldset>
+    <tdt-button class="js-search-btn" plain>Appliquer</tdt-button>
+</form>
 
-            <tdt-button class="js-search-btn" plain>Appliquer</tdt-button>
-        </form>
-    <!-- </div> -->
-
-    <!-- <button class="searchbox-toggle-btn"></button> -->
-<!-- </div> -->
+<!-- <button class="searchbox-toggle-btn"></button> -->

@@ -43,3 +43,15 @@
   letter-spacing: 0.2rem;
   animation: opacity 0.2s both;
 }
+
+@media (max-width: 640px) {
+  .ticket {
+    border-radius: 0;
+  }
+
+  .ticket:hover,
+:host([open]) .ticket {
+    transform: none;
+    box-shadow: 0 0.8rem 1.2rem -0.8rem rgba(0, 0, 0, 0.2);
+  }
+}

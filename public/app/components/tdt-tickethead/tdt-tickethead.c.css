@@ -138,8 +138,66 @@
   transition: none;
 }
 
+@media (max-width: 640px) {
+  .ticket-head > *,
+.ticket-head:hover > *,
+:host[open] .ticket-head > * {
+    background: none !important;
+  }
+
+  .ticket-head {
+    position: relative;
+    height: 9rem;
+    padding: 0 2rem;
+    background: #60F0C0;
+    color: #202060;
+  }
+  .ticket-head > * {
+    border-radius: 0;
+  }
+
+  .l-summary {
+    position: static;
+    padding: 0;
+    background: none;
+  }
+  .l-summary::after {
+    display: none;
+  }
+  .l-summary .step-time, .l-summary .step-station {
+    font-size: 1.6rem;
+  }
+  .l-summary .journey-duration, .l-summary .journey-connections {
+    font-size: 1.2rem;
+  }
+  .l-summary .step-time, .l-summary .journey-duration {
+    width: 4rem;
+  }
+  .l-summary .journey-summary {
+    margin-top: 0;
+  }
+  .l-summary .conditions {
+    position: absolute;
+    right: 2rem;
+    top: 1.8rem;
+    font-size: 1rem;
+    font-weight: 600;
+  }
+
+  .l-price {
+    position: static;
+    background: none;
+  }
+  .l-price .price {
+    position: absolute;
+    right: 2rem;
+    bottom: 1.6rem;
+    font-size: 2rem;
+    line-height: initial;
+  }
+}
 /************************************************
-**************** TICKET--IN-CART ****************
+******************** IN-CART ********************
 ************************************************/
 :host([in-cart]) .ticket-head {
   position: relative;
