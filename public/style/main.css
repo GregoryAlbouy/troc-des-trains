@@ -470,6 +470,7 @@ body {
 .page-results .end-results p {
   margin-bottom: 1rem;
   font-size: 2rem;
+  line-height: 3rem;
   text-align: center;
 }
 .page-results .end-results a {
@@ -547,12 +548,6 @@ body {
     font-size: 6px;
   }
 
-  /* Ticket */
-  /* Cart */
-  .menu--cart {
-    width: 50%;
-  }
-
   /* Footer */
   .main-footer .footer-container {
     width: initial;
@@ -585,11 +580,6 @@ body {
   /* General */
   .desktop-only {
     display: none !important;
-  }
-
-  /* Cart-menu */
-  .menu--cart {
-    width: 100%;
   }
 
   /* Header */
@@ -634,8 +624,6 @@ body {
     border-bottom: 1px solid #FFF;
   }
 
-  /* Searchbox */
-  /* Ticket */
   /* Results page */
   .page-results .main {
     width: 100%;
