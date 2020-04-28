@@ -17,26 +17,31 @@ export class Ticket
     constructor(ticketData)
     {
         this.setData(ticketData)
+        if (ticketApp.cart.containsTicket(this)) this.inCart = true
     }
 
-    // À FINIR
     setData(ticketData)
     {
         const
             connections = ticketData.steps.length - 1,
             firstStep = ticketData.steps[0],
             lastStep = ticketData.steps[connections]
+
+        const conditionsTable = ['Tous publics', 'Carte Jeune', 'Carte Sénior']
         
         this.data.id = ticketData.id
         this.data.connections = connections
         this.data.connectionsDisplay = connections === 0 ? 'Direct' : `${connections} correspondance(s)`
-        this.data.startDate = Utils.datetime(firstStep.startTime).toDate()
+        this.data.startStation = firstStep.startStation
+        this.data.endStation = lastStep.endStation
+        this.data.startDate = ticketData.dummyDate || Utils.datetime(firstStep.startTime).toDate()
         this.data.startTime = Utils.datetime(firstStep.startTime).toTime()
         this.data.endTime = Utils.datetime(lastStep.endTime).toTime()
         this.data.totalDuration = Utils.datetime(lastStep.endTime, firstStep.startTime).toDuration()
         this.data.price = ticketData.price
         this.data.priceDisplay = `${ticketData.price}€` // use regex to convert NNNN to SS.SS€
         this.data.conditions = ticketData.conditions
+        this.data.conditionsDisplay = conditionsTable[ticketData.conditions]
         this.data.vendorName = ticketData.vendorName
         this.data.vendorPicture = ticketData.vendorPicture
 
@@ -51,20 +56,4 @@ export class Ticket
             }
         })
     }
-
-    // MOVE TO tdt-ticket
-    // connectedCallback() // custom for now: called by custom event appendEvent
-    // {
-    //     this.isAppended = true
-    //     this.dom.bodyHeight = Utils.getOffset(this.dom.body).height
-    //     this.toggleAccordion()
-    // }
-
-    // MOVE TO tdt-ticket
-    // use custom event instead
-    // addToCart()
-    // {
-    //     if (this.inCart) return
-    //     ticketApp.addToCart(this)
-    // }
 }

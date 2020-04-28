@@ -1,7 +1,8 @@
 import { TdtCart } from '../components/tdt-cart/tdt-cart.c.js'
-import { Searchbox } from './searchbox.js'
+import { TdtSearchbox } from '../components/tdt-searchbox/tdt-searchbox.c.js'
+// import { Searchbox } from './searchbox.js'
 import { SearchResult } from './search-result.js'
-import { Ticket } from './ticket.js'
+// import { Ticket } from './ticket.js'
 // import { ticketDataList } from './ticket-data.js'
 // import { Utils } from '../modules/utils.js'
 import { TicketAnimation } from './ticket-animation.js'
@@ -15,14 +16,16 @@ import { TicketEvent } from './ticket-event.js'
  */
 export class TicketApp
 {
-    TICKET_DATA_URL = 'http://localhost/trocdestrains/data/tickets.json'
-    cart = new TdtCart()
-    searchbox = new Searchbox()
-    searchResult = new SearchResult()
+    TICKET_DATA_URL = '../data/tickets.json'
+    cart
+    searchbox
+    searchResult
     
     constructor()
     {
-        document.body.appendChild(this.cart)
+        this.cart = document.body.appendChild(new TdtCart())
+        this.searchbox = document.querySelector('.search-section').appendChild(new TdtSearchbox)
+
         window.addEventListener('clickadd', this.addToCart.bind(this))
         window.addEventListener('clickremove', this.removeFromCart.bind(this))
 
@@ -38,12 +41,28 @@ export class TicketApp
     {
         // TODO: make it a selected data from user search request
         const ticketTable = await this.getTicketTable()
-        this.renderSearchResult(ticketTable)
+        this.searchResult = this.renderSearchResult(ticketTable)
     }
 
-    async getTicketTable()
+    async getTicketTable(filters = [])
     {
-        return (await fetch(this.TICKET_DATA_URL)).json()
+        const ticketTable = await (await fetch(this.TICKET_DATA_URL)).json()
+
+        if (!filters.length) return ticketTable
+
+        // const filterResult = ticketTable.filter((ticket) => {
+        //     const reduceResult = filters.reduce((a, b) => (ticket.conditions === a || ticket.conditions === b), false)
+        //     console.log('REDUCE RESULR: ', reduceResult)
+        //     return reduceResult
+        // })
+
+        const filterResult = ticketTable.filter((ticket) => {
+            const reduceResult = filters.some((condition) => ticket.conditions === condition)
+            return reduceResult
+        })
+        
+        // console.log('RESULT: ', filterResult)
+        return filterResult
     }
 
     addToCart(event)
@@ -71,14 +90,17 @@ export class TicketApp
 
         if (!ticket.inCart) return
         this.cart.remove(ticketElt, ticket)
+            .then(() => this.searchResult.reactivateTicket(ticket))
+        // this.searchResult.reactivateTicket(ticket)
     }
 
     renderSearchResult(ticketTable)
     {
-        ticketTable.forEach((ticketData) => {
-            this.searchResult.add(new Ticket(ticketData))
-        })
-        this.searchResult.render()
+        return new SearchResult(ticketTable)
+        // ticketTable.forEach((ticketData) => {
+        //     this.searchResult.add(new Ticket(ticketData))
+        // })
+        // this.searchResult.render()
     }
 
     /**

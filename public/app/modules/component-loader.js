@@ -6,6 +6,9 @@ import { TdtTickethead } from '../components/tdt-tickethead/tdt-tickethead.c.js'
 import { TdtTicketbody } from '../components/tdt-ticketbody/tdt-ticketbody.c.js'
 import { TdtCartTicket } from '../components/tdt-cart-ticket/tdt-cart-ticket.c.js'
 import { TdtCart } from '../components/tdt-cart/tdt-cart.c.js'
+// import { TdtApp } from '../components/tdt-app/tdt-app.c.js'
+// import { TdtHeader } from '../components/tdt-header/tdt-header.c.js'
+// import { TdtFooter } from '../components/tdt-footer/tdt-footer.c.js'
 
 export const loadComponents = () => {
     const components = [
@@ -15,7 +18,10 @@ export const loadComponents = () => {
         TdtTickethead,
         TdtTicketbody,
         TdtCartTicket,
-        TdtCart
+        TdtCart,
+        // TdtApp,
+        // TdtHeader,
+        // TdtFooter
     ]
     
     const defineComponent = (component) => customElements.define(component.config.TAGNAME, component)

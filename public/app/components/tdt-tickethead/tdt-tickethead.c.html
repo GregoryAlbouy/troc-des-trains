@@ -8,11 +8,13 @@
     
             <li class="journey-step">
                 <span class="step-time"><slot name="start-time"></slot></span>
-                <span class="step-station">Paris<span class="desktop-only"> Gare de Lyon</span></span>
+                <span class="step-station"><slot name="start-station"></slot></span>
+                <!-- <span class="step-station">Paris<span class="desktop-only"> Gare de Lyon</span></span> -->
             </li>
             <li class="journey-step">
                 <span class="step-time"><slot name="end-time"></slot></span>
-                <span class="step-station">Montpellier<span class="desktop-only"> St-Roch</span></span>
+                <span class="step-station"><slot name="end-station"></slot></span>
+                <!-- <span class="step-station">Montpellier<span class="desktop-only"> St-Roch</span></span> -->
             </li>
             <li class="journey-summary">
                 <span class="journey-duration"><slot name="duration"></slot></span>

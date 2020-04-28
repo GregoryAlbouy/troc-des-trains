@@ -27,7 +27,7 @@ export class TdtTicketbody extends AutoloadingComponent
                 conditionsContent  = conditionsElt.querySelector('.conditions-content strong'),
                 target             = this.root.querySelector('.journey-conditions')
 
-            conditionsContent.textContent = ticketData.conditions
+            conditionsContent.textContent = ticketData.conditionsDisplay
             conditionsBtn.addEventListener('click', () => conditionsDetail.toggleAttribute('open'))
             target.appendChild(conditionsElt)
         }
@@ -63,7 +63,7 @@ export class TdtTicketbody extends AutoloadingComponent
 
         setSlots()
         ticketData.steps.forEach(setStep)
-        if (ticketData.conditions !== 'Tous publics') setConditions()
+        if (ticketData.conditions) setConditions()
     }
 }
 
