@@ -1,4 +1,8 @@
 @charset "UTF-8";
+:host {
+  display: block;
+}
+
 .ticket {
   position: relative;
   margin-bottom: 1.5rem;
@@ -11,18 +15,18 @@
 }
 
 .ticket:hover,
-:host-context(tdt-ticket[open]) .ticket {
+:host([open]) .ticket {
   transform: translateY(0.4rem);
   transform-origin: top center;
   box-shadow: none;
 }
 
-:host-context(tdt-ticket[added]) .ticket {
+:host([added]) .ticket {
   transform: none;
   box-shadow: none;
 }
 
-:host-context(tdt-ticket[added]) .ticket::before {
+:host([added]) .ticket::before {
   content: "AJOUTÉ";
   display: flex;
   justify-content: center;

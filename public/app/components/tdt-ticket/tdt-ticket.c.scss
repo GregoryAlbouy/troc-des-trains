@@ -1,5 +1,9 @@
 @use '../../../../src/scss/settings' as s;
 
+:host {
+    display: block;
+}
+
 .ticket {
     position: relative;
     margin-bottom: 1.5rem;
@@ -12,15 +16,16 @@
 }
 
 .ticket:hover,
-:host-context(tdt-ticket[open]) .ticket {
+:host([open]) .ticket {
     transform:translateY(.4rem);
     transform-origin: top center;
     box-shadow: none;
 }
 
-:host-context(tdt-ticket[added]) .ticket { transform: none; box-shadow: none; }
+:host([added]) .ticket { transform: none; box-shadow: none; }
 
-:host-context(tdt-ticket[added]) .ticket::before {
+// "ADDED" overlay
+:host([added]) .ticket::before {
     content: "AJOUTÉ";
     display: flex;
     justify-content: center;

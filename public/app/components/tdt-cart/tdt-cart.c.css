@@ -11,7 +11,7 @@
   transition: transform 0.2s;
 }
 
-:host-context(tdt-cart[open]) {
+:host([open]) {
   transform: translateX(0);
 }
 

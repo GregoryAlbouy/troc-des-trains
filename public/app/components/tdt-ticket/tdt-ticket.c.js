@@ -52,12 +52,14 @@ export class TdtTicket extends AutoloadingComponent
     open()
     {
         this.setAttribute('open', '')
+        this.elt.head.setAttribute('open', '') // allows to avoid :host-context() in tickethead css
         return new TicketAnimation('openAccordion', this.elt.body.root.querySelector('.ticket-body'), 300)
     }
 
     close()
     {
         this.removeAttribute('open')
+        this.elt.head.removeAttribute('open') // allows to avoid :host-context() in tickethead css
         return new TicketAnimation('closeAccordion', this.elt.body.root.querySelector('.ticket-body'), 300)
     }
 

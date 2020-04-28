@@ -81,7 +81,8 @@
     // .step-station {  }
     .conditions { font-size: 1.6rem; }
 }
-:host-context(tdt-ticket[open]) .l-summary {
+
+:host([open]) .l-summary {
     border-bottom-left-radius: 0;
     transition: none;
 }
@@ -95,16 +96,16 @@
 .l-summary,
 .l-summary::after,
 .ticket-head:hover .l-price,
-:host-context(tdt-ticket[open]) .ticket-head:hover .l-price {
+:host([open]) .ticket-head:hover .l-price {
     background-color: s.$color1--light;
 }
 .l-price,
 .ticket-head:hover .l-summary,
 .ticket-head:hover .l-summary::after,
-:host-context(tdt-ticket[open]) .l-summary,
-:host-context(tdt-ticket[open]) .l-summary::after,
-:host-context(tdt-ticket[open]) .ticket-head:hover .l-summary,
-:host-context(tdt-ticket[open]) .ticket-head:hover .l-summary::after {
+:host([open]) .l-summary,
+:host([open]) .l-summary::after,
+:host([open]) .ticket-head:hover .l-summary,
+:host([open]) .ticket-head:hover .l-summary::after {
     background-color: s.$color1--dark;    
 }
 
@@ -124,7 +125,7 @@
         text-align: center;
     }
 }
-:host-context(tdt-ticket[open]) .l-price {
+:host([open]) .l-price {
     border-bottom-right-radius: 0;
     transition: none;
 }
@@ -134,7 +135,7 @@
 **************** TICKET--IN-CART ****************
 ************************************************/
 
-:host-context([in-cart]) {
+:host([in-cart]) {
 
     .ticket-head {
         position: relative;
@@ -222,5 +223,4 @@
             }
         }
     }
-
 }

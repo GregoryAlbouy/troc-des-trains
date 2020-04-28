@@ -13,7 +13,7 @@
     transition: transform .2s;
 }
 
-:host-context(tdt-cart[open]) { transform: translateX(0); }
+:host([open]) { transform: translateX(0); }
 
 .menu-title {
     position: relative;
