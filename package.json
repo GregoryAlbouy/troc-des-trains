@@ -6,7 +6,7 @@
   "scripts": {
     "sass:watch": "sass --watch src/scss/main.scss public/style/main.css",
     "sass:watch-c": "sass --watch --no-source-map public/app/components:public/app/components",
-    "sass:build": "sass --style=compressed --no-source-map src/scss/main.scss public/style/main.css && sass --style=compressed --no-source-map public/app/components:public/app/components"
+    "sass:build": "sass --style=compressed --no-source-map src/scss/main.scss public/style/main.css"
   },
   "repository": { 
     "type": "git",
