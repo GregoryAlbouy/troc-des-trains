@@ -1,2 +1,5 @@
 ext/
 node_modules
+src/app
+src/public
+dist
