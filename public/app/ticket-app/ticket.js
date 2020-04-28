@@ -10,14 +10,11 @@ import { ticketApp } from '../app.js'
 
 export class Ticket
 {
-    // ticketApp
-    data = {}
-    inCart = false
-
     constructor(ticketData)
     {
+        this.data = {}
         this.setData(ticketData)
-        if (ticketApp.cart.containsTicket(this)) this.inCart = true
+        this.inCart = ticketApp.cart.containsTicket(this)
     }
 
     setData(ticketData)

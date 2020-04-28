@@ -1,4 +1,7 @@
 /**
  * Work in progress
  */
-export class TicketEvent extends CustomEvent {}
+export class TicketEvent extends CustomEvent
+{
+    
+}

@@ -1,7 +1,5 @@
 export class TicketAnimation
 {
-    duration = 1000
-
     constructor(name, element, duration)
     {
         const animations = {
@@ -12,7 +10,7 @@ export class TicketAnimation
             addTicket: () => this.addTicket(element)
         }
 
-        if (duration) this.duration = duration
+        this.duration = duration || 1000
 
         animations[name]()
     }

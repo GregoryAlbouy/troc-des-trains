@@ -16,15 +16,12 @@ import { TicketEvent } from './ticket-event.js'
  */
 export class TicketApp
 {
-    TICKET_DATA_URL = '../data/tickets.json'
-    cart
-    searchbox
-    searchResult
-    
     constructor()
     {
+        this.TICKET_DATA_URL = '../data/tickets.json'
         this.cart = document.body.appendChild(new TdtCart())
         this.searchbox = document.querySelector('.search-section').appendChild(new TdtSearchbox)
+        this.searchResult = null
 
         window.addEventListener('clickadd', this.addToCart.bind(this))
         window.addEventListener('clickremove', this.removeFromCart.bind(this))

@@ -4,12 +4,9 @@ import { TdtTicket } from '../components/tdt-ticket/tdt-ticket.c.js';
 
 export class SearchResult
 {
-    content = [
-        // debugTicket
-    ]
-
     constructor(ticketTable)
     {
+        this.content = []
         ticketTable.forEach((ticketData) => {
             this.add(new Ticket(ticketData))
         })
