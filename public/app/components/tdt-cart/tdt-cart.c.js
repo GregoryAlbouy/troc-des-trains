@@ -4,8 +4,12 @@ import { TicketAnimation } from '../../ticket-app/ticket-animation.js'
 
 export class TdtCart extends AutoloadingComponent
 {
-    tickets = []
-    dom = {}
+    constructor()
+    {
+        super()
+        this.tickets = []
+        this.dom = {}
+    }
 
     connectedCallback()
     {

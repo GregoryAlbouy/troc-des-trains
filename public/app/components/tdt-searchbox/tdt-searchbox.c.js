@@ -5,14 +5,11 @@ import { Utils } from '../../modules/utils.js'
 
 export class TdtSearchbox extends AutoloadingComponent
 {
-    dom = {
-        fromInput: null,
-        toInput: null,
-        dateInput: null,
-        btn: null
+    constructor()
+    {
+        super()
+        this.dom = {}
     }
-
-    conditions = [ false, false, false ]
 
     connectedCallback()
     {

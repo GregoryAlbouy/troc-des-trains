@@ -5,7 +5,11 @@ import { TicketEvent } from '../../ticket-app/ticket-event.js'
 
 export class TdtTicket extends AutoloadingComponent
 {
-    elt = {}
+    constructor()
+    {
+        super()
+        this.elt = {}
+    }
 
     init(ticketData)
     {
