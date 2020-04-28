@@ -32,7 +32,7 @@ export class TdtSearchbox extends AutoloadingComponent
     async requestSearchResult(conditions)
     {
         const ticketTable = await ticketApp.getTicketTable(conditions)
-        console.log(ticketTable)
+
         const alteredTicketTable = ticketTable.map((ticket) => {
             ticket.steps[0].startStation = this.dom.fromInput.value || this.dom.fromInput.placeholder
             ticket.steps[ticket.steps.length - 1].endStation = this.dom.toInput.value || this.dom.toInput.placeholder
