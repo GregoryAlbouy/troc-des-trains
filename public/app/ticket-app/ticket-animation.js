@@ -11,7 +11,7 @@ export class TicketAnimation
         }
 
         this.duration = duration || 1000
-
+        if (!element) return
         animations[name]()
     }
 
@@ -22,85 +22,48 @@ export class TicketAnimation
 
     fadeout(element)
     {
-        element.animate([
-            { opacity: 1 },
-            { opacity: 0 }
-        ], {
-            duration: this.duration,
-            fill: 'forwards'
-        })
+        element.style.transition = `opacity ${this.duration}ms`
+        element.style.opacity = '0'
+        setTimeout(() => element.style.transition = null, this.duration)
     }
 
     openAccordion(element)
     {
-        // element.style.transition = `height ${this.duration}ms`
-        // element.style.height = `${element.ticketAnimation.naturalHeight}px`
-        // setTimeout(() => element.style.transition = null, this.duration)
+        if (!(element.ticketAnimation && element.ticketAnimation.naturalHeight)) return
 
-        element.animate([
-            { height: '0px' },
-            { height: `${element.ticketAnimation.naturalHeight}px` }
-        ], {
-            duration: this.duration,
-            fill: 'forwards'
-        })
-
-        element.childNodes.forEach((child) => {
-            if (child.nodeType === Node.ELEMENT_NODE) {
-                child.animate([
-                    { opacity: 0 },
-                    { opacity: 1 }
-                ], {
-                    duration: this.duration,
-                    fill: 'forwards'
-                })
-            }
-        })
+        element.style.transition = `height ${this.duration}ms, opacity ${this.duration}ms`
+        element.style.height = `${element.ticketAnimation.naturalHeight}px`
+        element.style.opacity = '1'
+        setTimeout(() => element.style.transition = null, this.duration)
     }
 
     closeAccordion(element)
     {
-        if (!element) return
         if (!element.ticketAnimation) element.ticketAnimation = {}
         if (!element.ticketAnimation.naturalHeight) element.ticketAnimation.naturalHeight = element.getBoundingClientRect().height
 
-        element.animate([
-            { height: `${element.getBoundingClientRect().height}px` },
-            { height: '0px' }
-        ], {
-            duration: this.duration,
-            fill: 'forwards'
-        })
-
-        // element.style.transition = `height ${this.duration}ms`
-        // element.style.height = '0px'
-        // setTimeout(() => element.style.transition = null, this.duration)
-
-        element.childNodes.forEach((child) => {
-            if (child.nodeType === Node.ELEMENT_NODE) {
-                child.style.transition = `opacity ${this.duration}ms`
-                child.style.opacity = 0
-                setTimeout(() => {
-                    child.style.opacity = null
-                    child.style.transition = null
-                }, this.duration)
-            }
-        })
+        element.style.transition = `height ${this.duration}ms, opacity ${this.duration}ms`
+        element.style.height = '0px'
+        element.style.opacity = '0'
+        setTimeout(() => element.style.transition = null, this.duration)
     }
 
     vanish(element)
     {
         const distance = window.innerWidth - element.offsetLeft
 
-        console.log(distance)
+        element.style.transition = `transform ${this.duration}ms, opacity ${this.duration}ms`
+        element.style.transform = `translate(${distance})px`
+        element.style.opacity = '0'
+        setTimeout(() => element.style.transition = null)
 
-        element.animate([
-            { transform: 'translate(0px)', opacity: 1 },
-            { transform: `translate(${distance}px)`, opacity: 0 }
-        ], {
-            duration: this.duration,
-            fill: 'forwards'
-        })
+        // element.animate([
+        //     { transform: 'translate(0px)', opacity: 1 },
+        //     { transform: `translate(${distance}px)`, opacity: 0 }
+        // ], {
+        //     duration: this.duration,
+        //     fill: 'forwards'
+        // })
     }
 
     async addTicket(element)
