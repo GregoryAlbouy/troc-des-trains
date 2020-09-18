@@ -2,6 +2,8 @@
 
 Front demonstration of a school project involving UX-UI research & mockup and web integration.
 
+Demo: https://gregoryalbouy.github.io/troc-des-trains/public/
+
 ## Features
 
 * Dummy ticket search & filtering
